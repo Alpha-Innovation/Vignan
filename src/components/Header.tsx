@@ -31,7 +31,25 @@ const Header = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
-              {/* Dropdown would go here */}
+              {/* Dropdown Menu */}
+              <div className="absolute left-0 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                <div className="p-4">
+                  <div className="mb-3">
+                    <h3 className="font-semibold text-vignan-blue text-sm uppercase">Masters</h3>
+                    <div className="mt-2 space-y-1">
+                      <a href="#" className="block text-gray-600 hover:text-vignan-red text-sm">MBA</a>
+                      <a href="#" className="block text-gray-600 hover:text-vignan-red text-sm">MCA</a>
+                    </div>
+                  </div>
+                  <div className="border-t pt-3">
+                    <h3 className="font-semibold text-vignan-blue text-sm uppercase">Bachelors</h3>
+                    <div className="mt-2 space-y-1">
+                      <a href="#" className="block text-gray-600 hover:text-vignan-red text-sm">BBA</a>
+                      <a href="#" className="block text-gray-600 hover:text-vignan-red text-sm">BCA</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <Button variant="outline" className="border-vignan-red text-vignan-red hover:bg-vignan-red hover:text-white">
               ENQUIRE NOW

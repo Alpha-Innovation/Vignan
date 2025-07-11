@@ -18,10 +18,9 @@ const HeroSection = () => {
             </div>
 
             <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight">
-              The door to endless{" "}
-              <span className="text-vignan-red">opportunities</span>
+              <span className="text-gray-900">Defined by Legacy.</span>
               <br />
-              has opened for you!
+              <span className="text-vignan-red">Redefining your Future.</span>
             </h1>
             
             <div className="mt-8 p-6 bg-vignan-red text-white rounded-lg">
