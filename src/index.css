@@ -9,7 +9,15 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 0 0% 3.9%;
+    
+    /* Vignan Brand Colors */
+    --vignan-red: 355 70% 54%;
+    --vignan-red-dark: 355 85% 45%;
+    --vignan-blue: 210 79% 46%;
+    --vignan-blue-light: 210 40% 96%;
+    --vignan-gray: 220 14% 96%;
+    --vignan-gray-dark: 215 16% 47%;
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -17,11 +25,11 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: var(--vignan-red);
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: var(--vignan-blue-light);
+    --secondary-foreground: var(--vignan-blue);
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;

@@ -24,6 +24,12 @@ export default {
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+				'vignan-red': 'hsl(var(--vignan-red))',
+				'vignan-red-dark': 'hsl(var(--vignan-red-dark))',
+				'vignan-blue': 'hsl(var(--vignan-blue))',
+				'vignan-blue-light': 'hsl(var(--vignan-blue-light))',
+				'vignan-gray': 'hsl(var(--vignan-gray))',
+				'vignan-gray-dark': 'hsl(var(--vignan-gray-dark))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
