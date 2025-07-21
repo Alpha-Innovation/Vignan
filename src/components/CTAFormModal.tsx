@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 
-const initialCaptcha = () => Math.random().toString(36).substring(2, 8);
-
 const programs = [
   'MBA',
   'MCA',

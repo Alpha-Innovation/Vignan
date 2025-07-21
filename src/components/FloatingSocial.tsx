@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faWhatsapp, faFacebookMessenger } from '@fortawesome/free-brands-svg-icons';
+import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { faPhone, faVideo, faRobot } from '@fortawesome/free-solid-svg-icons';
 
 const FloatingSocial: React.FC = () => {

@@ -50,7 +50,7 @@ const FacultySection: React.FC = () => {
   };
 
   return (
-    <section className="w-full bg-[#f7f9fb]">
+    <section className="w-full bg-[#f7f9fb] overflow-x-hidden">
       <div className="w-full mx-auto max-w-7xl py-8">
         <div className="text-center">
           <h2 className="uppercase text-lg md:text-2xl font-bold pt-8">Meet our<span className="text-primary"> Faculty - CDOE</span></h2>
@@ -68,9 +68,9 @@ const FacultySection: React.FC = () => {
                 className="flex transition-transform duration-500 ease-in-out"
                 style={{ transform: `translateX(-${currentSlide * 480}px)` }}
               >
-                {faculty.map((member, index) => (
-                  <div key={member.id} className="w-[480px] flex-shrink-0">
-                    <div className="relative h-[320px]" style={{ width: '100%', display: 'inline-block' }}>
+                {faculty.map((member) => (
+                  <div key={member.id} className="w-full max-w-[480px] flex-shrink-0 mx-auto">
+                    <div className="relative h-[320px] w-full" style={{ display: 'inline-block' }}>
                       <div className="flex h-full items-center justify-center m-auto">
                         <div className="border border-slate-200 rounded-lg w-[335px] md:w-[350px] h-[180px] flex flex-col justify-end py-6 bg-white">
                           <p className="font-semibold">{member.name}</p>

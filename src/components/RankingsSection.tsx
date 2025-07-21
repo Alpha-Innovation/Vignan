@@ -67,7 +67,7 @@ const RankingsSection: React.FC = () => {
               className="flex transition-transform duration-500 ease-in-out"
               style={{ transform: `translateX(-${currentSlide * 480}px)` }}
             >
-              {rankings.map((ranking, index) => (
+              {rankings.map((ranking) => (
                 <div key={ranking.id} className="w-[480px] flex-shrink-0">
                   <div className="relative h-[320px]">
                     <div className="flex h-full items-center justify-center m-auto">

@@ -45,7 +45,7 @@ const HeroSection: React.FC = () => {
               className="flex transition-transform duration-500 ease-in-out"
               style={{ transform: `translateX(-${currentSlide * 100}%)` }}
             >
-              {slides.map((slide, index) => (
+              {slides.map((slide) => (
                 <div key={slide.id} className="w-full flex-shrink-0">
                   <div className="w-full">
                     {/* Desktop Image */}
