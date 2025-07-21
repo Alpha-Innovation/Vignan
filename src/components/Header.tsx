@@ -25,19 +25,10 @@ const Header: React.FC<HeaderProps> = ({ onCtaClick }) => {
         {/* Logo Block */}
         <div className="flex flex-col items-start min-w-[340px]">
           <div className="flex items-center">
-            <img src="/img/vignan-logo.03d83441.webp" alt="Vignan Logo" className="h-12 w-auto" />
-            <div className="ml-2 flex flex-col">
-              <span className="text-[#D02829] font-bold text-xl leading-none">VIGNAN'S</span>
-              <span className="text-[#15396A] font-bold text-lg leading-none">ONLINE</span>
-              <span className="text-xs text-[#15396A] leading-none">Driving your future</span>
-            </div>
-              </div>
-          <div className="bg-[#15396A] text-white text-[10px] px-2 py-1 mt-1 rounded">
-            (Deemed to be University) - Estd. u/s 3 of UGC Act 1956
-              </div>
-          <div className="font-bold text-xs mt-1">
-            Centre for Distance and Online Education
+            <img src="/img/vignan-logo.03d83441.webp" alt="Vignan Logo" className="h-20 w-auto" />
+            
           </div>
+          
         </div>
         {/* Navigation */}
         <nav className="flex items-center space-x-6 mx-auto">
@@ -55,7 +46,14 @@ const Header: React.FC<HeaderProps> = ({ onCtaClick }) => {
           >
             Enquire Now
           </button>
-          <a href="https://apply.vignanonline.com/" target="_blank" rel="noopener noreferrer" className="uppercase font-bold text-black hover:text-[#CA2526] tracking-wide text-sm">Apply Now</a>
+          <button
+            className="uppercase font-bold text-black hover:text-[#CA2526] tracking-wide text-sm bg-transparent border-none outline-none cursor-pointer"
+            style={{ padding: 0, background: 'none' }}
+            onClick={onCtaClick}
+            type="button"
+          >
+            Apply Now
+          </button>
           {/* Desktop Menu Button */}
           <button
             className="ml-4 hidden md:block text-xl focus:outline-none"
@@ -75,16 +73,16 @@ const Header: React.FC<HeaderProps> = ({ onCtaClick }) => {
         <div className="absolute right-8 top-[100%] mt-2 w-72 bg-white border shadow-lg z-50">
           <ul className="divide-y divide-gray-200">
             <li>
-              <a href="/blogs" className="block px-6 py-3 hover:bg-gray-100 text-[#15396A]">BLOGS</a>
+              <button onClick={onCtaClick} className="block w-full text-left px-6 py-3 hover:bg-gray-100 text-[#15396A] bg-transparent border-none outline-none cursor-pointer">BLOGS</button>
             </li>
             <li>
-              <a href="/contact-us" className="block px-6 py-3 hover:bg-gray-100 text-[#15396A]">CONTACT US</a>
+              <button onClick={onCtaClick} className="block w-full text-left px-6 py-3 hover:bg-gray-100 text-[#15396A] bg-transparent border-none outline-none cursor-pointer">CONTACT US</button>
             </li>
             <li>
-              <a href="https://support.vignanonline.com" target="_blank" rel="noopener noreferrer" className="block px-6 py-3 hover:bg-gray-100 text-[#15396A]">STUDENT SUPPORT</a>
+              <button onClick={onCtaClick} className="block w-full text-left px-6 py-3 hover:bg-gray-100 text-[#15396A] bg-transparent border-none outline-none cursor-pointer">STUDENT SUPPORT</button>
             </li>
             <li>
-              <a href="https://refer.vignanonline.com/" target="_blank" rel="noopener noreferrer" className="block px-6 py-3 hover:bg-gray-100 text-[#15396A]">REFER A FRIEND</a>
+              <button onClick={onCtaClick} className="block w-full text-left px-6 py-3 hover:bg-gray-100 text-[#15396A] bg-transparent border-none outline-none cursor-pointer">REFER A FRIEND</button>
                               </li>
                           </ul>
               </div>
@@ -104,7 +102,14 @@ const Header: React.FC<HeaderProps> = ({ onCtaClick }) => {
           >
             Enquire Now
           </button>
-          <a href="https://apply.vignanonline.com/" target="_blank" rel="noopener noreferrer" className="uppercase font-bold text-black mb-4">Apply Now</a>
+          <button
+            className="uppercase font-bold text-black mb-4 bg-transparent border-none outline-none cursor-pointer"
+            style={{ padding: 0, background: 'none' }}
+            onClick={onCtaClick}
+            type="button"
+          >
+            Apply Now
+          </button>
           <a href="/blogs" className="text-black mb-2">Blogs</a>
           <a href="/contact-us" className="text-black mb-2">Contact Us</a>
           <a href="https://support.vignanonline.com" target="_blank" rel="noopener noreferrer" className="text-black mb-2">Student Support</a>

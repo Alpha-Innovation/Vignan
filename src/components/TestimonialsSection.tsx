@@ -63,7 +63,7 @@ const TestimonialsSection: React.FC = () => {
   };
 
   return (
-    <section className="w-full">
+    <section className="w-full overflow-x-hidden">
       <div className="w-full mx-auto max-w-7xl py-8">
         <div className="text-center">
           <h2 className="text-lg md:text-2xl font-bold uppercase py-4">
@@ -84,7 +84,7 @@ const TestimonialsSection: React.FC = () => {
                 style={{ transform: `translateX(-${currentSlide * 480}px)` }}
               >
                 {testimonials.map((testimonial) => (
-                  <div key={testimonial.id} className="w-[480px] flex-shrink-0">
+                  <div key={testimonial.id} className="w-full max-w-[480px] flex-shrink-0 mx-auto">
                     <div className="hover:bg-[#d02829] rounded-lg p-2 w-[70%] mx-auto text-black hover:text-white cursor-pointer" style={{ width: '100%', display: 'inline-block' }}>
                       <div className="flex justify-center">
                         <div className="h-[325px]">

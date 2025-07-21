@@ -17,7 +17,11 @@ const slides = [
   },
 ];
 
-const HeroSection: React.FC = () => {
+interface HeroSectionProps {
+  onCtaClick?: () => void;
+}
+
+const HeroSection: React.FC<HeroSectionProps> = ({ onCtaClick }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const nextSlide = () => {
@@ -50,27 +54,15 @@ const HeroSection: React.FC = () => {
                   <div className="w-full">
                     {/* Desktop Image */}
                     <div className="hidden md:block">
-                      {slide.link ? (
-                        <a href={slide.link} target="_blank" rel="noopener noreferrer">
-                          <img
-                            src={slide.desktopImage}
-                            width="1920"
-                            height="768"
-                            alt={slide.alt}
-                            title={slide.alt}
-                            className="w-full h-auto"
-                          />
-                        </a>
-                      ) : (
-                        <img
-                          src={slide.desktopImage}
-                          width="1920"
-                          height="768"
-                          alt={slide.alt}
-                          title={slide.alt}
-                          className="w-full h-auto"
-                        />
-                      )}
+                      <img
+                        src={slide.desktopImage}
+                        width="1920"
+                        height="768"
+                        alt={slide.alt}
+                        title={slide.alt}
+                        className="w-full h-auto cursor-pointer"
+                        onClick={onCtaClick}
+                      />
                     </div>
                     {/* Mobile Image */}
                     <div className="md:hidden mt-[80px]">

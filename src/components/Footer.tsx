@@ -3,7 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone, faEnvelope, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import { faWhatsapp, faFacebook, faTwitter, faInstagram, faYoutube, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  onCtaClick?: () => void;
+}
+const Footer: React.FC<FooterProps> = ({ onCtaClick }) => {
   return (
     <footer className="w-full bg-[#0A4377] text-white pt-0 pb-6 px-0 footer-montserrat">
       {/* Top Red Contact Bar - Centered and Rounded */}
@@ -48,10 +51,10 @@ const Footer: React.FC = () => {
             <h3 className="font-bold mb-2 text-sm tracking-normal">VIGNAN ONLINE - CDOE</h3>
             <ul className="space-y-0.5">
               <li><a href="/about-us" className="hover:underline text-xs font-normal">About us</a></li>
-              <li><a href="/programs" className="hover:underline text-xs font-normal">Programs</a></li>
-              <li><a href="/blogs" className="hover:underline text-xs font-normal">Blogs</a></li>
-              <li><a href="/refer-a-friend" className="hover:underline text-xs font-normal">Refer a friend</a></li>
-              <li><a href="/apply-now" className="hover:underline text-xs font-normal">Apply Now</a></li>
+              <li><button onClick={onCtaClick} className="hover:underline text-xs font-normal bg-transparent border-none outline-none cursor-pointer p-0">Programs</button></li>
+              <li><button onClick={onCtaClick} className="hover:underline text-xs font-normal bg-transparent border-none outline-none cursor-pointer p-0">Blogs</button></li>
+              <li><button onClick={onCtaClick} className="hover:underline text-xs font-normal bg-transparent border-none outline-none cursor-pointer p-0">Refer a friend</button></li>
+              <li><button onClick={onCtaClick} className="hover:underline text-xs font-normal bg-transparent border-none outline-none cursor-pointer p-0">Apply Now</button></li>
             </ul>
           </div>
           {/* PROGRAMS */}

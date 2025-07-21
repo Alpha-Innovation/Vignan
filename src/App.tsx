@@ -23,7 +23,7 @@ function App() {
   return (
     <div className="App">
       <Header onCtaClick={openCta} />
-      <HeroSection />
+      <HeroSection onCtaClick={openCta} />
       <ProgramsSection onCtaClick={openCta} />
       <RankingsSection />
       <SkillsSection />
@@ -31,7 +31,7 @@ function App() {
       <FacultySection />
       <TestimonialsSection />
       <NewsSection />
-      <Footer />
+      <Footer onCtaClick={openCta} />
       <FloatingSocial />
       {ctaOpen && (
         <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black bg-opacity-50" onClick={closeCta}>
