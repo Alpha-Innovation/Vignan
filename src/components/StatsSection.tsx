@@ -1,66 +1,25 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Award, Users, BookOpen, Globe } from "lucide-react";
+import React from 'react';
 
-const StatsSection = () => {
-  const stats = [
-    {
-      icon: <Users className="w-8 h-8" />,
-      number: "10,000+",
-      label: "Students Enrolled",
-      description: "Across all programs"
-    },
-    {
-      icon: <BookOpen className="w-8 h-8" />,
-      number: "15+",
-      label: "Academic Programs",
-      description: "UGC approved courses"
-    },
-    {
-      icon: <Award className="w-8 h-8" />,
-      number: "48",
-      label: "Years of Excellence",
-      description: "In academic leadership"
-    },
-    {
-      icon: <Globe className="w-8 h-8" />,
-      number: "100%",
-      label: "Online Learning",
-      description: "Flexible education"
-    }
-  ];
+const stats = [
+  { id: 1, value: '45+', label: 'Years of Excellence' },
+  { id: 2, value: 'A+', label: 'NAAC Accreditation' },
+  { id: 3, value: '72', label: 'NIRF India Rank' },
+  { id: 4, value: '10000+', label: 'Online Learners' },
+];
 
+const StatsSection: React.FC = () => {
   return (
-    <section className="py-16 bg-vignan-gray">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-            Why Choose <span className="text-vignan-red">Vignan Online</span>?
-          </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Join India's leading online university with a legacy of academic excellence 
-            and innovation in distance learning.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {stats.map((stat, index) => (
-            <Card key={index} className="text-center hover:shadow-lg transition-shadow duration-300">
-              <CardContent className="p-8">
-                <div className="flex justify-center mb-4">
-                  <div className="w-16 h-16 bg-vignan-blue rounded-full flex items-center justify-center text-white">
-                    {stat.icon}
-                  </div>
-                </div>
-                <h3 className="text-3xl font-bold text-vignan-red mb-2">{stat.number}</h3>
-                <h4 className="text-lg font-semibold text-gray-900 mb-1">{stat.label}</h4>
-                <p className="text-gray-600 text-sm">{stat.description}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+    <section className="stats-section w-full bg-[#f7f9fb] py-12 fade-in">
+      <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        {stats.map((stat) => (
+          <div key={stat.id} className="flex flex-col items-center justify-center p-6 bg-white rounded-lg shadow-md slide-up">
+            <span className="text-3xl md:text-5xl font-bold text-[#CA2526] mb-2">{stat.value}</span>
+            <span className="text-gray-700 text-lg md:text-xl font-semibold">{stat.label}</span>
+          </div>
+        ))}
       </div>
     </section>
   );
 };
 
-export default StatsSection;
+export default StatsSection; 

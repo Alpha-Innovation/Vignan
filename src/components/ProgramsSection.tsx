@@ -1,104 +1,186 @@
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import React, { useState } from 'react';
 
-const ProgramsSection = () => {
-  const [activeTab, setActiveTab] = useState("All");
+const programs = [
+  {
+    id: 1,
+    title: 'Online BCA in Computer Science and Information Technology',
+    image: '/img/Online-BCA-in-Computer-Science-and-IT.47d64dcf.webp',
+    duration: '3 years',
+    category: 'bachelors',
+    link: '/online-bca/computer-science-it',
+  },
+  {
+    id: 2,
+    title: 'Online BBA in General Management',
+    image: '/img/online-bba-in-general-management.f846b928.webp',
+    duration: '3 years',
+    category: 'bachelors',
+    link: '/online-bba/general',
+  },
+  {
+    id: 3,
+    title: 'Online MBA in Human Resource Management',
+    image: '/img/online-mba-hr.webp',
+    duration: '2 years',
+    category: 'masters',
+    link: '/online-mba/human-resource-management',
+  },
+  {
+    id: 4,
+    title: 'Online MBA in Marketing',
+    image: '/img/online-mba-marketing.webp',
+    duration: '2 years',
+    category: 'masters',
+    link: '/online-mba/marketing',
+  },
+  {
+    id: 5,
+    title: 'Online MBA in Business Analytics',
+    image: '/img/online-mba-analytics.webp',
+    duration: '2 years',
+    category: 'masters',
+    link: '/online-mba/business-analytics',
+  },
+  {
+    id: 6,
+    title: 'Online MBA in Finance and Human Resource',
+    image: '/img/online-mba-finance-hr.webp',
+    duration: '2 years',
+    category: 'masters',
+    link: '/online-mba/finance-and-human-resource',
+  },
+  {
+    id: 7,
+    title: 'Online MCA in Computer Science and Information Technology',
+    image: '/img/online-mca-cs.webp',
+    duration: '2 years',
+    category: 'masters',
+    link: '/online-mca/computer-science-and-it',
+  },
+  {
+    id: 8,
+    title: 'Online MBA in Information Technology',
+    image: '/img/online-mba-it.webp',
+    duration: '2 years',
+    category: 'masters',
+    link: '/online-mba/information-technology',
+  },
+  {
+    id: 9,
+    title: 'Online MBA in Finance',
+    image: '/img/online-mba-finance.webp',
+    duration: '2 years',
+    category: 'masters',
+    link: '/online-mba/finance',
+  },
+  {
+    id: 10,
+    title: 'Online MCA in Data Science',
+    image: '/img/Online-MCA-in-Data-Science.55acdb6f.webp',
+    duration: '2 years',
+    category: 'masters',
+    link: '/online-mca/data-science',
+  },
+];
 
-  const programs = {
-    All: [
-      { name: "MBA", fullName: "Master of Business Administration", duration: "2 Years" },
-      { name: "MCA", fullName: "Master of Computer Applications", duration: "2 Years" },
-      { name: "BBA", fullName: "Bachelor of Business Administration", duration: "3 Years" },
-      { name: "BCA", fullName: "Bachelor of Computer Applications", duration: "3 Years" },
-    ],
-    MASTERS: [
-      { name: "MBA", fullName: "Master of Business Administration", duration: "2 Years" },
-      { name: "MCA", fullName: "Master of Computer Applications", duration: "2 Years" },
-    ],
-    BACHELORS: [
-      { name: "BBA", fullName: "Bachelor of Business Administration", duration: "3 Years" },
-      { name: "BCA", fullName: "Bachelor of Computer Applications", duration: "3 Years" },
-    ],
-  };
+const getTitleParts = (title: string) => {
+  // Split at ' in ' to get main and specialization
+  const match = title.match(/(.+ in )(.+)/);
+  if (match) {
+    return [match[1], match[2]];
+  }
+  return [title, ''];
+};
 
-  const tabs = ["All", "MASTERS", "BACHELORS"];
+interface ProgramsSectionProps {
+  onCtaClick?: () => void;
+}
+
+const ProgramsSection: React.FC<ProgramsSectionProps> = ({ onCtaClick }) => {
+  const [activeTab, setActiveTab] = useState('all');
+
+  const filteredPrograms =
+    activeTab === 'all' ? programs : programs.filter((program) => program.category === activeTab);
 
   return (
-    <section className="py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-            <span className="text-vignan-blue">ONLINE DEGREE</span>{" "}
-            <span className="text-vignan-red">PROGRAMS OFFERED</span>
+    <section className="programs-section w-full bg-[#f7f9fb] py-10 font-[Montserrat],sans-serif">
+      <div className="lg:max-w-7xl mx-auto justify-center px-3">
+        <div className="flex lg:flex-row flex-col text-center justify-center">
+          <h1 className="lg:text-[22px] text-xl flex font-bold uppercase text-center justify-center">
+            Online Degree
+          </h1>
+          <h2 className="text-[#CA2526] lg:text-[22px] text-xl flex font-bold uppercase pl-3 text-center justify-center">
+            Programs Offered
           </h2>
         </div>
-
-        {/* Tabs */}
-        <div className="flex justify-center mb-8">
-          <div className="flex bg-gray-100 rounded-lg p-1">
-            {tabs.map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`px-6 py-3 rounded-md font-medium transition-all duration-200 ${
-                  activeTab === tab
-                    ? "bg-white text-vignan-red shadow-sm"
-                    : "text-gray-600 hover:text-gray-900"
-                }`}
-              >
-                {tab}
-              </button>
-            ))}
+        <div>
+          <div className="alltabs flex flex-row justify-center gap-[10px] lg:gap-[20px] pt-10 pb-10">
+            <button
+              className={`tabbutton md:min-w-[165px] w-[150px] lg:w-[180px] xl:w-[100px] py-2 md:min-h-[60px] text-black ${
+                activeTab === 'all' ? 'active bg-[#CA2526] text-white' : 'bg-white hover:bg-gray-100'
+              }`}
+              onClick={() => setActiveTab('all')}
+            >
+              All
+            </button>
+            <button
+              className={`tabbutton md:min-w-[165px] w-[150px] lg:w-[180px] xl:w-[100px] py-2 md:min-h-[60px] text-black ${
+                activeTab === 'masters' ? 'active bg-[#CA2526] text-white' : 'bg-white hover:bg-gray-100'
+              }`}
+              onClick={() => setActiveTab('masters')}
+            >
+              MASTERS
+            </button>
+            <button
+              className={`tabbutton md:min-w-[165px] w-[150px] lg:w-[180px] xl:w-[100px] py-2 md:min-h-[60px] text-black ${
+                activeTab === 'bachelors' ? 'active bg-[#CA2526] text-white' : 'bg-white hover:bg-gray-100'
+              }`}
+              onClick={() => setActiveTab('bachelors')}
+            >
+              BACHELORS
+            </button>
           </div>
-        </div>
-
-        {/* Programs Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {programs[activeTab as keyof typeof programs].map((program, index) => (
-            <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
-              <CardContent className="p-6 text-center">
-                <div className="w-16 h-16 bg-vignan-blue rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white font-bold text-xl">{program.name}</span>
-                </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  {program.name}
-                </h3>
-                <p className="text-gray-600 text-sm mb-2">{program.fullName}</p>
-                <p className="text-vignan-red font-medium text-sm mb-4">{program.duration}</p>
-                <Button 
-                  variant="outline" 
-                  size="sm"
-                  className="border-vignan-blue text-vignan-blue hover:bg-vignan-blue hover:text-white"
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8">
+            {filteredPrograms.map((program) => {
+              const [main, specialization] = getTitleParts(program.title);
+              return (
+                <div
+                  key={program.id}
+                  className="max-w-[370px] mx-auto border border-gray-200 rounded-xl bg-white shadow-none hover:shadow-md transition-all duration-300 p-0"
                 >
-                  Learn More
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {/* CTA Section */}
-        <div className="text-center mt-12">
-          <div className="bg-gradient-to-r from-vignan-red to-vignan-red-dark text-white rounded-lg p-8 max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold mb-4">Ready to Start Your Journey?</h3>
-            <p className="text-lg mb-6">Join thousands of students who have transformed their careers with our online programs.</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg" 
-                className="bg-white text-vignan-red hover:bg-gray-100"
-              >
-                Apply Now
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-white text-white hover:bg-white hover:text-vignan-red"
-              >
-                Download Brochure
-              </Button>
-            </div>
+                  <img
+                    src={program.image}
+                    alt={program.title}
+                    className="w-full h-[220px] object-cover rounded-t-xl"
+                  />
+                  <div className="p-6 flex flex-col">
+                    <p className="font-bold text-base text-left mb-2">
+                      {main}
+                      {specialization && (
+                        <span className="text-[#CA2526] font-semibold">{specialization}</span>
+                      )}
+                    </p>
+                    <div className="flex flex-col gap-2 text-sm mb-4">
+                      <div className="flex items-center gap-2">
+                        <img src="/img/live-classes-icon.webp" alt="" className="w-5 h-5" />
+                        <span className="text-gray-700">Live Online Classes</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <img src="/img/duration-icon.webp" alt="" className="w-4 h-4" />
+                        <span className="text-gray-700">{program.duration}</span>
+                      </div>
+                    </div>
+                    <button
+                      className="w-full bg-[#CA2526] text-white font-bold rounded-full py-3 text-base mt-2 uppercase hover:bg-white hover:text-[#CA2526] hover:border hover:border-[#CA2526] transition"
+                      type="button"
+                      onClick={onCtaClick}
+                    >
+                      Get Started
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -106,4 +188,4 @@ const ProgramsSection = () => {
   );
 };
 
-export default ProgramsSection;
+export default ProgramsSection; 

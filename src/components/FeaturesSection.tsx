@@ -1,61 +1,90 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { CheckCircle, Clock, Monitor, FileText } from "lucide-react";
+import React from 'react';
 
-const FeaturesSection = () => {
-  const features = [
-    {
-      icon: <Monitor className="w-12 h-12" />,
-      title: "100% Online Learning",
-      description: "Study from anywhere, anytime with our comprehensive online platform designed for working professionals."
-    },
-    {
-      icon: <CheckCircle className="w-12 h-12" />,
-      title: "UGC Approved Programs",
-      description: "All our degree programs are approved by UGC and hold the same value as regular on-campus degrees."
-    },
-    {
-      icon: <Clock className="w-12 h-12" />,
-      title: "Flexible Schedule",
-      description: "Balance your work and studies with our flexible learning schedules designed for busy professionals."
-    },
-    {
-      icon: <FileText className="w-12 h-12" />,
-      title: "Industry-Relevant Curriculum",
-      description: "Our curriculum is designed with industry experts to ensure you learn skills that matter in today's job market."
-    }
-  ];
+const features = [
+  {
+    id: 1,
+    title: '360° Career',
+    description: 'Advancement Serveices',
+    icon: '/img/career-advancement-icon.webp',
+  },
+  {
+    id: 2,
+    title: 'Learning Management System',
+    description: 'User friendly interactive web',
+    icon: '/img/lms-icon.webp',
+  },
+  {
+    id: 3,
+    title: '10+',
+    description: 'In-demand electives & Advanced certifications',
+    icon: '/img/electives-icon.webp',
+  },
+  {
+    id: 4,
+    title: 'Learners Support System',
+    description: 'Dedicated team to answer your queries & guide you throughout',
+    icon: '/img/support-icon.webp',
+  },
+];
 
+const FeaturesSection: React.FC = () => {
   return (
-    <section className="py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-            <span className="text-vignan-blue">Features</span> That Make Us{" "}
-            <span className="text-vignan-red">Different</span>
+    <section className="features-section">
+      <div className="w-full mx-auto max-w-7xl pt-8">
+        <div className="py-4">
+          <h2 className="uppercase text-lg md:text-2xl font-bold pb-4 text-center">
+            RE-DEFINING YOUR <span className="text-primary">RECOGNITIONS</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Experience the future of education with our innovative approach to online learning
-          </p>
+          <p className="text-center text-gray-600">GET THE ADDED ADVANTAGE OF KICKSTARTING YOUR CAREER</p>
         </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {features.map((feature, index) => (
-            <Card key={index} className="text-center border-none shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <CardContent className="p-8">
-                <div className="flex justify-center mb-6">
-                  <div className="w-20 h-20 bg-gradient-to-br from-vignan-blue to-vignan-red rounded-full flex items-center justify-center text-white">
-                    {feature.icon}
-                  </div>
+        <div className="flex flex-col md:flex-row justify-between items-center gap-10">
+          <div className="md:w-[60%] lg:p-10 md:p-0 w-full flex flex-col justify-between lg:gap-5 gap-2">
+            <div className="flex lg:gap-5 gap-3 px-3">
+              {features.slice(0, 2).map((feature) => (
+                <div key={feature.id} className="flex flex-col md:flex-row justify-center items-center gap-10 bg-white border-[#e6ecef] rounded-xl w-[300px] py-5 px-4 md:p-[20px] md:w-[550px] min-h-[180px] shadow-lg hover:shadow-xl transition-all duration-300">
+                  <img
+                    src={feature.icon}
+                    title={feature.title}
+                    alt={feature.title}
+                    width="90"
+                    height="90"
+                    className="w-20 h-16 object-contain"
+                  />
+                  <p className="text-center md:text-left">
+                    <span className="text-primary font-semibold">{feature.title}</span>
+                    <br />
+                    {feature.description}
+                  </p>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">{feature.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{feature.description}</p>
-              </CardContent>
-            </Card>
-          ))}
+              ))}
+            </div>
+            <div className="flex lg:gap-5 gap-3 px-3 mt-4">
+              {features.slice(2, 4).map((feature) => (
+                <div key={feature.id} className="flex flex-col md:flex-row justify-center items-center gap-10 bg-white border-[#e6ecef] rounded-xl w-[300px] py-5 px-4 md:p-[20px] md:w-[550px] min-h-[180px] shadow-lg hover:shadow-xl transition-all duration-300">
+                  <img
+                    src={feature.icon}
+                    title={feature.title}
+                    alt={feature.title}
+                    width="90"
+                    height="90"
+                    className="w-20 h-16 object-contain"
+                  />
+                  <p className="text-center md:text-left">
+                    <span className="text-primary font-semibold">{feature.title}</span>
+                    <br />
+                    {feature.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="md:w-[40%] p-10">
+            <img src="/img/Online-Education.f03165ae.webp" alt="Online Education" width="355" height="556" className="-mt-[22%]" />
+          </div>
         </div>
       </div>
     </section>
   );
 };
 
-export default FeaturesSection;
+export default FeaturesSection; 

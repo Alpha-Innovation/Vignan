@@ -1,72 +1,118 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Star, Quote } from "lucide-react";
+import React, { useState } from 'react';
 
-const TestimonialsSection = () => {
-  const testimonials = [
-    {
-      name: "Rajesh Kumar",
-      role: "MBA Graduate",
-      image: "👨‍💼",
-      rating: 5,
-      text: "Vignan Online transformed my career. The flexible schedule allowed me to work while studying, and the quality of education is outstanding."
-    },
-    {
-      name: "Priya Sharma",
-      role: "BCA Student",
-      image: "👩‍💻",
-      rating: 5,
-      text: "The online platform is user-friendly and the faculty support is excellent. I'm gaining practical knowledge that's directly applicable to my career."
-    },
-    {
-      name: "Amit Patel",
-      role: "MCA Graduate",
-      image: "👨‍🎓",
-      rating: 5,
-      text: "48 years of academic excellence shows in every aspect of their online programs. Highly recommended for working professionals."
-    }
-  ];
+const testimonials = [
+  {
+    id: 1,
+    name: 'Sowmya',
+    degree: '(MBA-Online)',
+    image: '/img/Sowmya.dee63fa7.webp',
+  },
+  {
+    id: 2,
+    name: 'Mohammad Altaf Hussain',
+    degree: '(MBA-Online)',
+    image: '/img/Mohammed-Altaf-Hussain.c9af2d0f.webp',
+  },
+  {
+    id: 3,
+    name: 'Rajendra',
+    degree: '(MBA-Online)',
+    image: '/img/Rajendra.da20fe4c.webp',
+  },
+  {
+    id: 4,
+    name: 'Vijay',
+    degree: '(MBA-Online)',
+    image: '/img/Vijay.fb123a26.webp',
+  },
+  {
+    id: 5,
+    name: 'K M Naidu',
+    degree: '(MBA-Online)',
+    image: '/img/K-M-Naidu.662172a6.webp',
+  },
+  {
+    id: 6,
+    name: 'Swati',
+    degree: '(MBA-Online)',
+    image: '/img/Swati.5cbf8737.webp',
+  },
+  {
+    id: 7,
+    name: 'Massudan',
+    degree: '(MBA-Online)',
+    image: '/img/Massudan.03f34406.webp',
+  },
+  {
+    id: 8,
+    name: 'Ramya',
+    degree: '(MBA-Online)',
+    image: '/img/Ramya.807c6527.webp',
+  },
+];
+
+const TestimonialsSection: React.FC = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
 
   return (
-    <section className="py-16 bg-vignan-gray">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-            What Our <span className="text-vignan-red">Students</span> Say
+    <section className="w-full">
+      <div className="w-full mx-auto max-w-7xl py-8">
+        <div className="text-center">
+          <h2 className="text-lg md:text-2xl font-bold uppercase py-4">
+            Our <span className="text-primary">Testimonials</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Hear from our successful graduates who have transformed their careers with Vignan Online
-          </p>
         </div>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
-              <CardContent className="p-8">
-                <div className="flex items-center mb-4">
-                  <Quote className="w-8 h-8 text-vignan-red mr-3" />
-                  <div className="flex">
-                    {Array.from({ length: testimonial.rating }).map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                    ))}
+        <div className="w-full relative flex justify-center m-auto">
+          <div className="next-testimonials absolute bottom-0 right-32 md:top-[40%] md:-right-10 cursor-pointer z-10 slick-arrow" onClick={nextSlide}>
+            <img src="/img/icon-slider-next.e03370c3.svg" width="40" height="40" alt="slider-next" />
+          </div>
+          <div className="prev-testimonials absolute bottom-0 left-32 md:top-[40%] md:-left-9 cursor-pointer z-10 slick-arrow" onClick={prevSlide}>
+            <img src="/img/icon-slider-prev.f104ac12.svg" width="40" height="40" alt="slider prev" />
+          </div>
+          <div className="slick-testimonials flex lg:gap-10 gap-1">
+            <div className="relative overflow-hidden">
+              <div
+                className="flex transition-transform duration-500 ease-in-out"
+                style={{ transform: `translateX(-${currentSlide * 480}px)` }}
+              >
+                {testimonials.map((testimonial) => (
+                  <div key={testimonial.id} className="w-[480px] flex-shrink-0">
+                    <div className="hover:bg-[#d02829] rounded-lg p-2 w-[70%] mx-auto text-black hover:text-white cursor-pointer" style={{ width: '100%', display: 'inline-block' }}>
+                      <div className="flex justify-center">
+                        <div className="h-[325px]">
+                          <div className="py-2 px-2 text-left">
+                            <p className="font-semibold text-[16px]">{testimonial.name}</p>
+                            <p className="font-[400]">{testimonial.degree}</p>
+                          </div>
+                          <div>
+                            <img
+                              alt={testimonial.name}
+                              src={testimonial.image}
+                              width="327"
+                              height="184"
+                              className="rounded-lg object-cover"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                
-                <p className="text-gray-600 mb-6 italic">"{testimonial.text}"</p>
-                
-                <div className="flex items-center">
-                  <div className="text-3xl mr-4">{testimonial.image}</div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
-                    <p className="text-sm text-vignan-blue">{testimonial.role}</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
 };
 
-export default TestimonialsSection;
+export default TestimonialsSection; 

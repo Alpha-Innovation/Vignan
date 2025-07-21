@@ -1,89 +1,136 @@
-import { Button } from "@/components/ui/button";
-import studentHero from "@/assets/student-hero.jpg";
+import React, { useState, useEffect } from 'react';
 
-const HeroSection = () => {
+const slides = [
+  {
+    id: 1,
+    desktopImage: '/img/online-degree.5230aed9.webp',
+    mobileImage: '/img/online-degree-mob.7253fa2a.webp',
+    alt: 'Online Degree',
+    link: null,
+  },
+  {
+    id: 2,
+    desktopImage: '/img/Batch-starts-Desktop.194c110d.webp',
+    mobileImage: '/img/Batch-starts-Mobile-CTA (1).c09fd389.webp',
+    alt: 'Batch Starts',
+    link: 'https://apply.vignanonline.com/',
+  },
+];
+
+const HeroSection: React.FC = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
+  // Auto-scroll logic
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 3000); // 3 seconds
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-gray-50 to-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Side - Text Content */}
-          <div className="relative z-10">
-            {/* Decorative dots */}
-            <div className="absolute -top-8 -left-8 w-20 h-20 opacity-20">
-              <div className="grid grid-cols-4 gap-2">
-                {Array.from({ length: 16 }).map((_, i) => (
-                  <div key={i} className="w-2 h-2 bg-vignan-red rounded-full"></div>
-                ))}
-              </div>
-            </div>
-
-            <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight">
-              <span className="text-gray-900">Defined by Legacy.</span>
-              <br />
-              <span className="text-vignan-red">Redefining your Future.</span>
-            </h1>
-            
-            <div className="mt-8 p-6 bg-vignan-red text-white rounded-lg">
-              <p className="text-xl font-semibold mb-2">Admissions closing soon</p>
-              <p className="text-3xl font-bold mb-4">MBA | MCA | BBA | BCA</p>
-              <Button 
-                size="lg" 
-                className="bg-black hover:bg-gray-800 text-white px-8 py-3 text-lg"
-              >
-                Apply Now
-              </Button>
-            </div>
-
-            <div className="mt-8">
-              <p className="text-2xl font-semibold text-gray-800">
-                #Driving<span className="text-vignan-red">Your</span>
-                <span className="text-vignan-red">Future</span>
-              </p>
-            </div>
-          </div>
-
-          {/* Right Side - Image and Academic Excellence */}
-          <div className="relative">
-            {/* 48 Years Badge */}
-            <div className="absolute top-0 left-0 z-20">
-              <div className="relative">
-                {/* Red geometric background */}
-                <div className="w-80 h-80 bg-vignan-red relative overflow-hidden">
-                  {/* Diagonal cut */}
-                  <div className="absolute top-0 right-0 w-0 h-0 border-l-[100px] border-l-transparent border-t-[100px] border-t-white"></div>
-                  
-                  {/* Content */}
-                  <div className="absolute inset-0 flex flex-col justify-center items-start pl-8 pr-16">
-                    <div className="text-white">
-                      <div className="text-8xl font-bold leading-none">4</div>
-                      <div className="text-6xl font-bold leading-none mt-2">8</div>
-                      <div className="text-xl font-medium mt-4 uppercase tracking-wider">
-                        YEARS
-                      </div>
+    <section className="w-full mx-auto">
+      <div className="banner object-cover bg-center bg-no-repeat relative">
+        <div className="hero-slider relative">
+          <div className="relative overflow-hidden">
+            <div
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+            >
+              {slides.map((slide, index) => (
+                <div key={slide.id} className="w-full flex-shrink-0">
+                  <div className="w-full">
+                    {/* Desktop Image */}
+                    <div className="hidden md:block">
+                      {slide.link ? (
+                        <a href={slide.link} target="_blank" rel="noopener noreferrer">
+                          <img
+                            src={slide.desktopImage}
+                            width="1920"
+                            height="768"
+                            alt={slide.alt}
+                            title={slide.alt}
+                            className="w-full h-auto"
+                          />
+                        </a>
+                      ) : (
+                        <img
+                          src={slide.desktopImage}
+                          width="1920"
+                          height="768"
+                          alt={slide.alt}
+                          title={slide.alt}
+                          className="w-full h-auto"
+                        />
+                      )}
+                    </div>
+                    {/* Mobile Image */}
+                    <div className="md:hidden mt-[80px]">
+                      {slide.link ? (
+                        <a href={slide.link} target="_blank" rel="noopener noreferrer">
+                          <img
+                            src={slide.mobileImage}
+                            width="490"
+                            height="512"
+                            alt={slide.alt}
+                            title={slide.alt}
+                            className="w-full h-auto"
+                          />
+                        </a>
+                      ) : (
+                        <img
+                          src={slide.mobileImage}
+                          width="490"
+                          height="512"
+                          alt={slide.alt}
+                          title={slide.alt}
+                          className="w-full h-auto"
+                        />
+                      )}
                     </div>
                   </div>
                 </div>
-                
-                {/* Academic Excellence text */}
-                <div className="absolute -bottom-4 left-8 bg-white px-4 py-2 shadow-lg">
-                  <div className="text-gray-900 font-bold text-sm uppercase tracking-wider">
-                    OF ACADEMIC
-                  </div>
-                  <div className="text-vignan-red font-bold text-sm uppercase tracking-wider">
-                    EXCELLENCE
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
-
-            {/* Student Image */}
-            <div className="ml-32 mt-32">
-              <img 
-                src={studentHero} 
-                alt="Student with laptop" 
-                className="w-full max-w-md rounded-lg shadow-2xl"
+          </div>
+          {/* Navigation Arrows */}
+          <div className="next-banner absolute md:z-10 top-[40%] right-5 cursor-pointer desktop slick-arrow" onClick={nextSlide}>
+            <img
+              src="/img/icon-slider-next.e03370c3.svg"
+              width="40"
+              height="40"
+              alt="Next"
+              className="hover:scale-110 transition-transform duration-200"
+            />
+          </div>
+          <div className="prev-banner absolute md:z-10 top-[40%] left-5 cursor-pointer desktop slick-arrow" onClick={prevSlide}>
+            <img
+              src="/img/icon-slider-prev.f104ac12.svg"
+              width="40"
+              height="40"
+              alt="Previous"
+              className="hover:scale-110 transition-transform duration-200"
+            />
+          </div>
+          {/* Dots Indicator */}
+          <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 flex space-x-2">
+            {slides.map((_, index) => (
+              <button
+                key={index}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === currentSlide ? 'bg-white' : 'bg-white/50'
+                }`}
+                onClick={() => setCurrentSlide(index)}
               />
-            </div>
+            ))}
           </div>
         </div>
       </div>
@@ -91,4 +138,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+export default HeroSection; 

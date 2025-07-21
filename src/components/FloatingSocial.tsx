@@ -1,38 +1,57 @@
-import { MessageCircle, Phone, Mail } from "lucide-react";
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faWhatsapp, faFacebookMessenger } from '@fortawesome/free-brands-svg-icons';
+import { faPhone, faVideo, faRobot } from '@fortawesome/free-solid-svg-icons';
 
-const FloatingSocial = () => {
+const FloatingSocial: React.FC = () => {
+  const handleWhatsAppClick = () => {
+    const phoneNumber = '919972517336';
+    const message = 'Hi, I would like to know more about Vignan Online programs.';
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
+  const handleCallClick = () => {
+    window.open('tel:+919972517336', '_self');
+  };
+  const handleVideoClick = () => {
+    window.open('https://meet.vignanonline.com', '_blank');
+  };
+  const handleChatbotClick = () => {
+    window.open('https://chatbot.vignanonline.com', '_blank');
+  };
+
   return (
-    <div className="fixed right-4 top-1/2 transform -translate-y-1/2 z-50 flex flex-col gap-3">
-      {/* WhatsApp */}
-      <a 
-        href="https://wa.me/918888888888" 
-        target="_blank" 
-        rel="noopener noreferrer"
-        className="w-12 h-12 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center text-white shadow-lg transition-all duration-300 hover:scale-110"
-        title="Chat on WhatsApp"
+    <div className="floating-social flex flex-col gap-4 fixed right-6 bottom-6 z-50 items-end">
+      <button 
+        className="social-button bg-black hover:bg-gray-800 text-white"
+        onClick={handleVideoClick}
+        aria-label="Video Call"
       >
-        <MessageCircle size={20} />
-      </a>
-      
-      {/* Phone */}
-      <a 
-        href="tel:+918888888888" 
-        className="w-12 h-12 bg-vignan-blue hover:bg-blue-600 rounded-full flex items-center justify-center text-white shadow-lg transition-all duration-300 hover:scale-110"
-        title="Call us"
+        <FontAwesomeIcon icon={faVideo} />
+      </button>
+      <button 
+        className="social-button bg-[#0056a3] hover:bg-[#003366] text-white"
+        onClick={handleCallClick}
+        aria-label="Call Us"
       >
-        <Phone size={20} />
-      </a>
-      
-      {/* Email */}
-      <a 
-        href="mailto:info@vignanonline.com" 
-        className="w-12 h-12 bg-vignan-red hover:bg-vignan-red-dark rounded-full flex items-center justify-center text-white shadow-lg transition-all duration-300 hover:scale-110"
-        title="Email us"
+        <FontAwesomeIcon icon={faPhone} />
+      </button>
+      <button 
+        className="social-button bg-[#25d366] hover:bg-[#128c7e] text-white"
+        onClick={handleWhatsAppClick}
+        aria-label="WhatsApp"
       >
-        <Mail size={20} />
-      </a>
+        <FontAwesomeIcon icon={faWhatsapp} />
+      </button>
+      <button 
+        className="social-button bg-white border-2 border-[#CA2526] hover:bg-[#CA2526] hover:text-white text-[#CA2526]"
+        onClick={handleChatbotClick}
+        aria-label="Chatbot"
+      >
+        <FontAwesomeIcon icon={faRobot} />
+      </button>
     </div>
   );
 };
 
-export default FloatingSocial;
+export default FloatingSocial; 
