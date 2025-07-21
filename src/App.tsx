@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import './App.css';
 import Header from './components/Header';
@@ -20,6 +20,13 @@ function App() {
   // Handler to pass to CTA buttons
   const openCta = () => setCtaOpen(true);
   const closeCta = () => setCtaOpen(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setCtaOpen(true);
+    }, 5000); // 20 seconds
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div className="App">
