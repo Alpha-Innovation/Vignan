@@ -6,22 +6,7 @@ const programs = [
   'BBA',
   'BCA',
 ];
-const states = [
-  'Andhra Pradesh',
-  'Telangana',
-  'Karnataka',
-  'Tamil Nadu',
-  'Kerala',
-  'Other',
-];
-const cities = [
-  'Guntur',
-  'Hyderabad',
-  'Bangalore',
-  'Chennai',
-  'Kochi',
-  'Other',
-];
+
 
 const CTAFormModal: React.FC = () => {
   const [form, setForm] = useState({
