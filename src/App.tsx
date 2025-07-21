@@ -32,7 +32,7 @@ function App() {
       <TestimonialsSection />
       <NewsSection />
       <Footer onCtaClick={openCta} />
-      <FloatingSocial />
+      <FloatingSocial onCtaClick={openCta} />
       {ctaOpen && (
         <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black bg-opacity-50" onClick={closeCta}>
           <div className="relative z-10 max-w-5xl w-full" onClick={e => e.stopPropagation()}>

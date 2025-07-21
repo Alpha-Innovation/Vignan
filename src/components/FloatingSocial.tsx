@@ -3,7 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { faPhone, faVideo, faRobot } from '@fortawesome/free-solid-svg-icons';
 
-const FloatingSocial: React.FC = () => {
+interface FloatingSocialProps {
+  onCtaClick?: () => void;
+}
+const FloatingSocial: React.FC<FloatingSocialProps> = ({ onCtaClick }) => {
   const handleWhatsAppClick = () => {
     const phoneNumber = '919972517336';
     const message = 'Hi, I would like to know more about Vignan Online programs.';
@@ -14,10 +17,10 @@ const FloatingSocial: React.FC = () => {
     window.open('tel:+919972517336', '_self');
   };
   const handleVideoClick = () => {
-    window.open('https://meet.vignanonline.com', '_blank');
+    if (onCtaClick) onCtaClick();
   };
   const handleChatbotClick = () => {
-    window.open('https://chatbot.vignanonline.com', '_blank');
+    if (onCtaClick) onCtaClick();
   };
 
   return (

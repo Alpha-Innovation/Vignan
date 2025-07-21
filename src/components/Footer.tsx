@@ -14,11 +14,11 @@ const Footer: React.FC<FooterProps> = ({ onCtaClick }) => {
         <div className="bg-[#CA2526] text-white py-4 px-4 rounded-xl w-full max-w-5xl flex flex-col md:flex-row justify-between items-center gap-4 -mt-8 z-10 relative shadow-lg">
           <div className="flex flex-col items-center text-center flex-1 min-w-[140px]">
             <FontAwesomeIcon icon={faPhone} className="mb-1 text-xl" />
-            <span className="text-sm font-medium">+919391477061</span>
+            <span className="text-sm font-medium">+919972517336</span>
           </div>
           <div className="flex flex-col items-center text-center flex-1 min-w-[140px]">
             <FontAwesomeIcon icon={faWhatsapp} className="mb-1 text-xl" />
-            <span className="text-sm font-medium">+919391477061</span>
+            <span className="text-sm font-medium">+9199972517336</span>
           </div>
           <div className="flex flex-col items-center text-center flex-1 min-w-[140px]">
             <FontAwesomeIcon icon={faEnvelope} className="mb-1 text-xl" />
