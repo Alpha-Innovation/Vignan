@@ -6,14 +6,6 @@ const programs = [
   'BBA',
   'BCA',
 ];
-const electives = [
-  'General',
-  'Finance',
-  'Marketing',
-  'IT',
-  'HR',
-  'Analytics',
-];
 const states = [
   'Andhra Pradesh',
   'Telangana',
@@ -38,7 +30,7 @@ const CTAFormModal: React.FC = () => {
     countryCode: '+91',
     mobile: '',
     program: '',
-    elective: '',
+    // elective removed
     state: '',
     city: '',
     consent: false,
@@ -52,9 +44,9 @@ const CTAFormModal: React.FC = () => {
     if (!form.email.trim() || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.email)) errs.email = 'Valid email is required';
     if (!form.mobile.trim() || !/^\d{10}$/.test(form.mobile)) errs.mobile = 'Valid 10 digit mobile is required';
     if (!form.program) errs.program = 'Select a program';
-    if (!form.elective) errs.elective = 'Select an elective';
-    if (!form.state) errs.state = 'Select a state';
-    if (!form.city) errs.city = 'Select a city';
+    // if (!form.elective) errs.elective = 'Select an elective'; // Removed
+    if (!form.state.trim()) errs.state = 'State is required';
+    if (!form.city.trim()) errs.city = 'City is required';
     if (!form.consent) errs.consent = 'Consent is required';
     return errs;
   };
@@ -82,7 +74,7 @@ const CTAFormModal: React.FC = () => {
         countryCode: form.countryCode,
         mobile: form.mobile,
         program: form.program,
-        elective: form.elective,
+        // elective removed
         state: form.state,
         city: form.city
       }).toString();
@@ -167,47 +159,28 @@ const CTAFormModal: React.FC = () => {
         {form.program === '' && (
           <span className="text-red-500 text-xs">Select a program</span>
         )}
-        <select
-          name="elective"
-          className="border border-gray-300 rounded px-4 py-3 w-full text-base"
-          value={form.elective}
-          onChange={handleChange}
-        >
-          <option value="">Select Elective</option>
-          {electives.map((e) => (
-            <option key={e} value={e}>{e}</option>
-          ))}
-        </select>
-        {form.elective === '' && (
-          <span className="text-red-500 text-xs">Select an elective</span>
-        )}
-        <select
+        {/* Removed Elective field */}
+        <input
+          type="text"
           name="state"
+          placeholder="State"
           className="border border-gray-300 rounded px-4 py-3 w-full text-base"
           value={form.state}
           onChange={handleChange}
-        >
-          <option value="">Select State</option>
-          {states.map((s) => (
-            <option key={s} value={s}>{s}</option>
-          ))}
-        </select>
-        {form.state === '' && (
-          <span className="text-red-500 text-xs">Select a state</span>
+        />
+        {form.state !== '' && !form.state.trim() && (
+          <span className="text-red-500 text-xs">State is required</span>
         )}
-        <select
+        <input
+          type="text"
           name="city"
+          placeholder="City"
           className="border border-gray-300 rounded px-4 py-3 w-full text-base"
           value={form.city}
           onChange={handleChange}
-        >
-          <option value="">Select City</option>
-          {cities.map((c) => (
-            <option key={c} value={c}>{c}</option>
-          ))}
-        </select>
-        {form.city === '' && (
-          <span className="text-red-500 text-xs">Select a city</span>
+        />
+        {form.city !== '' && !form.city.trim() && (
+          <span className="text-red-500 text-xs">City is required</span>
         )}
         <div className="flex items-start gap-2 mt-2">
           <input

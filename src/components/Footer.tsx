@@ -18,7 +18,7 @@ const Footer: React.FC<FooterProps> = ({ onCtaClick }) => {
           </div>
           <div className="flex flex-col items-center text-center flex-1 min-w-[140px]">
             <FontAwesomeIcon icon={faWhatsapp} className="mb-1 text-xl" />
-            <span className="text-sm font-medium">+9199972517336</span>
+            <span className="text-sm font-medium">+919972517336</span>
           </div>
           <div className="flex flex-col items-center text-center flex-1 min-w-[140px]">
             <FontAwesomeIcon icon={faEnvelope} className="mb-1 text-xl" />
@@ -50,7 +50,7 @@ const Footer: React.FC<FooterProps> = ({ onCtaClick }) => {
           <div className="px-2 md:px-4">
             <h3 className="font-bold mb-2 text-sm tracking-normal">VIGNAN ONLINE - CDOE</h3>
             <ul className="space-y-0.5">
-              <li><a href="/about-us" className="hover:underline text-xs font-normal">About us</a></li>
+              <li><button onClick={onCtaClick} className="hover:underline text-xs font-normal bg-transparent border-none outline-none cursor-pointer p-0">About us</button></li>
               <li><button onClick={onCtaClick} className="hover:underline text-xs font-normal bg-transparent border-none outline-none cursor-pointer p-0">Programs</button></li>
               <li><button onClick={onCtaClick} className="hover:underline text-xs font-normal bg-transparent border-none outline-none cursor-pointer p-0">Blogs</button></li>
               <li><button onClick={onCtaClick} className="hover:underline text-xs font-normal bg-transparent border-none outline-none cursor-pointer p-0">Refer a friend</button></li>

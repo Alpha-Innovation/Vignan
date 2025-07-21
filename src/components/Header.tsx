@@ -32,7 +32,14 @@ const Header: React.FC<HeaderProps> = ({ onCtaClick }) => {
         </div>
         {/* Navigation */}
         <nav className="flex items-center space-x-6 mx-auto">
-          <a href="/about-us" className="uppercase font-bold text-black hover:text-[#CA2526] tracking-wide text-sm">About Us</a>
+          <button
+            className="uppercase font-bold text-black hover:text-[#CA2526] tracking-wide text-sm bg-transparent border-none outline-none cursor-pointer"
+            style={{ padding: 0, background: 'none' }}
+            onClick={onCtaClick}
+            type="button"
+          >
+            About Us
+          </button>
           <div className="relative group">
             <button className="uppercase font-bold text-black flex items-center hover:text-[#CA2526] tracking-wide text-sm">
               Programs
@@ -93,7 +100,14 @@ const Header: React.FC<HeaderProps> = ({ onCtaClick }) => {
           <button className="self-end mb-4" onClick={() => setIsMobileMenuOpen(false)} aria-label="Close mobile menu">
             <span className="text-3xl">&times;</span>
           </button>
-          <a href="/about-us" className="uppercase font-bold text-black mb-4">About Us</a>
+          <button
+            className="uppercase font-bold text-black mb-4 bg-transparent border-none outline-none cursor-pointer"
+            style={{ padding: 0, background: 'none' }}
+            onClick={onCtaClick}
+            type="button"
+          >
+            About Us
+          </button>
           <a href="#programs" className="uppercase font-bold text-black mb-4">Programs</a>
           <button
             className="bg-[#CA2526] text-white font-bold rounded-full px-6 py-2 uppercase mb-4"
