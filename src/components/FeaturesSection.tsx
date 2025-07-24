@@ -37,11 +37,11 @@ const FeaturesSection: React.FC = () => {
           </h2>
           <p className="text-center text-gray-600">GET THE ADDED ADVANTAGE OF KICKSTARTING YOUR CAREER</p>
         </div>
-        <div className="flex flex-col md:flex-row justify-between items-center gap-10">
-          <div className="md:w-[60%] lg:p-10 md:p-0 w-full flex flex-col justify-between lg:gap-5 gap-2">
-            <div className="flex lg:gap-5 gap-3 px-3">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-10">
+          <div className="md:w-[60%] lg:p-10 md:p-0 w-full flex flex-col justify-between gap-2 md:gap-5">
+            <div className="flex flex-col md:flex-row lg:gap-5 gap-2 px-3">
               {features.slice(0, 2).map((feature) => (
-                <div key={feature.id} className="flex flex-col md:flex-row justify-center items-center gap-10 bg-white border-[#e6ecef] rounded-xl w-[300px] py-5 px-4 md:p-[20px] md:w-[550px] min-h-[180px] shadow-lg hover:shadow-xl transition-all duration-300">
+                <div key={feature.id} className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-10 bg-white border-[#e6ecef] rounded-xl w-full max-w-md py-5 px-4 md:p-[20px] min-h-[180px] shadow-lg hover:shadow-xl transition-all duration-300">
                   <img
                     src={feature.icon}
                     title={feature.title}
@@ -58,9 +58,9 @@ const FeaturesSection: React.FC = () => {
                 </div>
               ))}
             </div>
-            <div className="flex lg:gap-5 gap-3 px-3 mt-4">
+            <div className="flex flex-col md:flex-row lg:gap-5 gap-2 px-3 mt-2 md:mt-0">
               {features.slice(2, 4).map((feature) => (
-                <div key={feature.id} className="flex flex-col md:flex-row justify-center items-center gap-10 bg-white border-[#e6ecef] rounded-xl w-[300px] py-5 px-4 md:p-[20px] md:w-[550px] min-h-[180px] shadow-lg hover:shadow-xl transition-all duration-300">
+                <div key={feature.id} className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-10 bg-white border-[#e6ecef] rounded-xl w-full max-w-md py-5 px-4 md:p-[20px] min-h-[180px] shadow-lg hover:shadow-xl transition-all duration-300">
                   <img
                     src={feature.icon}
                     title={feature.title}
@@ -78,8 +78,8 @@ const FeaturesSection: React.FC = () => {
               ))}
             </div>
           </div>
-          <div className="md:w-[40%] p-10">
-            <img src="/img/Online-Education.f03165ae.webp" alt="Online Education" width="355" height="556" className="-mt-[22%]" />
+          <div className="md:w-[40%] p-4 md:p-10 w-full">
+            <img src="/img/Online-Education.f03165ae.webp" alt="Online Education" width="355" height="556" className="w-full max-w-xs md:max-w-md mx-auto -mt-[22%]" />
           </div>
         </div>
       </div>

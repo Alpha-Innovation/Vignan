@@ -70,9 +70,9 @@ const Header: React.FC<HeaderProps> = ({ onCtaClick }) => {
             <button className="ml-2 text-xl" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} aria-label="Open mobile menu">
               <FontAwesomeIcon icon={faBars} />
             </button>
-          </div>
+                    </div>
         </nav>
-      </div>
+                    </div>
       {/* Desktop Dropdown Menu */}
       {isMenuOpen && (
         <div className="absolute right-2 md:right-8 top-[100%] mt-2 w-64 md:w-72 bg-white border shadow-lg z-50">
@@ -88,10 +88,10 @@ const Header: React.FC<HeaderProps> = ({ onCtaClick }) => {
             </li>
             <li>
               <button onClick={onCtaClick} className="block w-full text-left px-6 py-3 hover:bg-gray-100 text-[#15396A] bg-transparent border-none outline-none cursor-pointer">REFER A FRIEND</button>
-            </li>
-          </ul>
-        </div>
-      )}
+                              </li>
+                          </ul>
+              </div>
+            )}
       {/* Mobile Menu (unchanged) */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 bg-white z-50 p-4 flex flex-col items-center text-center">

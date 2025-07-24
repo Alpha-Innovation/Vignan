@@ -114,40 +114,38 @@ const NewsSection: React.FC = () => {
           </h2>
         </div>
         <div className="w-full pt-10 relative justify-center items-center m-auto">
-          <div className="next-media absolute -bottom-8 right-32 md:top-[50%] md:-right-10 cursor-pointer slick-arrow" onClick={nextSlide}>
+          <div className="next-media absolute -bottom-8 right-4 md:top-[50%] md:-right-10 cursor-pointer slick-arrow" onClick={nextSlide}>
             <img src="/img/icon-slider-next.e03370c3.svg" width="40" height="40" alt="slider-next" />
           </div>
-          <div className="prev-media absolute -bottom-8 left-32 md:top-[50%] md:-left-9 cursor-pointer slick-arrow" onClick={prevSlide}>
+          <div className="prev-media absolute -bottom-8 left-4 md:top-[50%] md:-left-9 cursor-pointer slick-arrow" onClick={prevSlide}>
             <img src="/img/icon-slider-prev.f104ac12.svg" width="40" height="40" alt="slider prev" />
           </div>
-          <div className="slick-media flex justify-center p-4 items-center m-4 relative gap-10">
-            <div className="relative overflow-hidden">
-              <div
-                className="flex transition-transform duration-500 ease-in-out"
-                style={{ transform: `translateX(-${currentSlide * 424}px)` }}
-              >
-                {news.map((item) => (
-                  <div key={item.id} className="w-[424px] flex-shrink-0">
-                    <div className="md:p-2 p-1" style={{ width: '100%', display: 'inline-block' }}>
-                      <div className="rounded-t-md justify-center m-auto">
-                        <img
-                          src={item.image}
-                          alt={item.title}
-                          width="370"
-                          height="225"
-                          className="w-full object-cover rounded-t-md"
-                        />
-                      </div>
-                      <div className="bg-[#CA2526] text-white p-5 rounded-b-md">
-                        <a href={item.link} target="_blank" rel="noopener noreferrer">
-                          <p className="text-[15px]">{item.title}</p>
-                          <p className="font-semibold">{item.source}</p>
-                        </a>
-                      </div>
+          <div className="relative overflow-hidden">
+            <div
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+            >
+              {news.map((item) => (
+                <div key={item.id} className="w-full max-w-xs flex-shrink-0">
+                  <div className="md:p-2 p-1 w-full" style={{ display: 'inline-block' }}>
+                    <div className="rounded-t-md justify-center m-auto">
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        width="370"
+                        height="225"
+                        className="w-full object-cover rounded-t-md"
+                      />
+                    </div>
+                    <div className="bg-[#CA2526] text-white p-5 rounded-b-md">
+                      <a href={item.link} target="_blank" rel="noopener noreferrer">
+                        <p className="text-[15px]">{item.title}</p>
+                        <p className="font-semibold">{item.source}</p>
+                      </a>
                     </div>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

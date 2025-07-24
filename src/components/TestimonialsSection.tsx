@@ -77,14 +77,14 @@ const TestimonialsSection: React.FC = () => {
           <div className="prev-testimonials absolute bottom-0 left-4 md:top-[40%] md:-left-9 cursor-pointer z-10 slick-arrow" onClick={prevSlide}>
             <img src="/img/icon-slider-prev.f104ac12.svg" width="32" height="32" alt="slider prev" className="md:w-10 md:h-10 w-8 h-8" />
           </div>
-          <div className="slick-testimonials flex lg:gap-10 gap-1">
+          <div className="slick-testimonials flex gap-2 md:gap-10">
             <div className="relative overflow-hidden">
               <div
                 className="flex transition-transform duration-500 ease-in-out"
-                style={{ transform: `translateX(-${currentSlide * (window.innerWidth < 640 ? 320 : 480)}px)` }}
+                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
               >
                 {testimonials.map((testimonial) => (
-                  <div key={testimonial.id} className="w-full max-w-[320px] sm:max-w-[480px] flex-shrink-0 mx-auto">
+                  <div key={testimonial.id} className="w-full max-w-xs flex-shrink-0 mx-auto">
                     <div className="hover:bg-[#d02829] rounded-lg p-2 w-full mx-auto text-black hover:text-white cursor-pointer">
                       <div className="flex justify-center">
                         <div className="h-[220px] sm:h-[325px]">

@@ -62,21 +62,21 @@ const FacultySection: React.FC = () => {
           <div className="prev-faculty absolute bottom-0 left-4 md:top-[40%] md:-left-9 cursor-pointer z-10 slick-arrow" onClick={prevSlide}>
             <img src="/img/icon-slider-prev.f104ac12.svg" width="32" height="32" alt="slider prev" className="md:w-10 md:h-10 w-8 h-8" />
           </div>
-          <div className="slick-faculty flex justify-center m-auto items-center lg:gap-5">
+          <div className="slick-faculty flex gap-2 md:gap-5 justify-center m-auto items-center">
             <div className="relative overflow-hidden">
               <div
                 className="flex transition-transform duration-500 ease-in-out"
-                style={{ transform: `translateX(-${currentSlide * (window.innerWidth < 640 ? 320 : 480)}px)` }}
+                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
               >
                 {faculty.map((member) => (
-                  <div key={member.id} className="w-full max-w-[320px] sm:max-w-[480px] flex-shrink-0 mx-auto">
+                  <div key={member.id} className="w-full max-w-xs flex-shrink-0 mx-auto">
                     <div className="relative h-[180px] sm:h-[320px] w-full" style={{ display: 'inline-block' }}>
                       <div className="flex h-full items-center justify-center m-auto">
-                        <div className="border border-slate-200 rounded-lg w-[220px] sm:w-[335px] md:w-[350px] h-[120px] sm:h-[180px] flex flex-col justify-end py-3 sm:py-6 bg-white">
+                        <div className="border border-slate-200 rounded-lg w-full max-w-[350px] h-[120px] sm:h-[180px] flex flex-col justify-end py-3 sm:py-6 bg-white">
                           <p className="font-semibold text-sm sm:text-base">{member.name}</p>
                           <p className="text-xs sm:text-sm">{member.degree}</p>
                           <p className="text-xs sm:text-sm">{member.position}</p>
-                          <div className="rounded-full p-2 bg-white absolute top-2 sm:top-4 left-[30%] sm:left-[37%] shadow-lg">
+                          <div className="rounded-full p-2 bg-white absolute top-2 sm:top-4 left-1/2 -translate-x-1/2 shadow-lg">
                             <img
                               className="h-[50px] w-[50px] sm:h-[90px] sm:w-[90px] rounded-full object-cover"
                               src={member.image}
