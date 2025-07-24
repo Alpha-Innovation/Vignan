@@ -21,38 +21,36 @@ const Header: React.FC<HeaderProps> = ({ onCtaClick }) => {
         </div>
       </div>
       {/* Main Navbar */}
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between py-1 px-2 md:px-6">
+      <div className="max-w-7xl mx-auto flex flex-row items-center justify-between py-0 px-2 md:px-6 mb-0 h-16 md:h-auto">
         {/* Logo Block */}
-        <div className="flex flex-col items-start w-full md:w-auto mb-2 md:mb-0">
-          <div className="flex items-center">
-            <img src="/img/vignan-logo.03d83441.webp" alt="Vignan Logo" className="h-12 md:h-20 w-auto" />
-          </div>
+        <div className="flex items-center h-16 md:h-auto">
+          <img src="/img/vignan-logo.03d83441.webp" alt="Vignan Logo" className="h-12 md:h-20 w-auto align-middle" />
         </div>
         {/* Navigation */}
-        <nav className="flex flex-wrap items-center space-x-2 md:space-x-6 mx-auto w-full md:w-auto justify-center md:justify-end">
+        <nav className="flex flex-wrap items-center space-x-2 md:space-x-6 h-16 md:h-auto w-full md:w-auto justify-end">
           <button
-            className="uppercase font-bold text-black hover:text-[#CA2526] tracking-wide text-xs md:text-sm bg-transparent border-none outline-none cursor-pointer"
+            className="uppercase font-bold text-black hover:text-[#CA2526] tracking-wide text-xs md:text-sm bg-transparent border-none outline-none cursor-pointer hidden md:inline-flex"
             style={{ padding: 0, background: 'none' }}
             onClick={onCtaClick}
             type="button"
           >
             About Us
           </button>
-          <div className="relative group">
+          <div className="relative group hidden md:inline-flex">
             <button className="uppercase font-bold text-black flex items-center hover:text-[#CA2526] tracking-wide text-xs md:text-sm">
               Programs
               <FontAwesomeIcon icon={faAngleDown} className="ml-1" />
             </button>
           </div>
           <button
-            className="bg-[#CA2526] text-white font-bold rounded-full px-3 md:px-4 py-1 uppercase hover:bg-[#d02829] transition tracking-wide text-xs md:text-sm"
+            className="bg-[#CA2526] text-white font-bold rounded-full px-3 md:px-4 py-1 uppercase hover:bg-[#d02829] transition tracking-wide text-xs md:text-sm hidden md:inline-flex"
             onClick={onCtaClick}
             type="button"
           >
             Enquire Now
           </button>
           <button
-            className="uppercase font-bold text-black hover:text-[#CA2526] tracking-wide text-xs md:text-sm bg-transparent border-none outline-none cursor-pointer"
+            className="uppercase font-bold text-black hover:text-[#CA2526] tracking-wide text-xs md:text-sm bg-transparent border-none outline-none cursor-pointer hidden md:inline-flex"
             style={{ padding: 0, background: 'none' }}
             onClick={onCtaClick}
             type="button"
@@ -67,10 +65,12 @@ const Header: React.FC<HeaderProps> = ({ onCtaClick }) => {
           >
             <FontAwesomeIcon icon={isMenuOpen ? faTimes : faBars} />
           </button>
-          {/* Mobile Hamburger Button */}
-          <button className="ml-2 md:ml-4 md:hidden block" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} aria-label="Open mobile menu">
-              <FontAwesomeIcon icon={faBars} className="text-xl" />
+          {/* Mobile Hamburger Button aligned right */}
+          <div className="flex-1 flex justify-end md:hidden">
+            <button className="ml-2 text-xl" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} aria-label="Open mobile menu">
+              <FontAwesomeIcon icon={faBars} />
             </button>
+          </div>
         </nav>
       </div>
       {/* Desktop Dropdown Menu */}
@@ -94,38 +94,45 @@ const Header: React.FC<HeaderProps> = ({ onCtaClick }) => {
       )}
       {/* Mobile Menu (unchanged) */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 bg-white z-50 p-4 flex flex-col">
+        <div className="fixed inset-0 bg-white z-50 p-4 flex flex-col items-center text-center">
           <button className="self-end mb-4" onClick={() => setIsMobileMenuOpen(false)} aria-label="Close mobile menu">
             <span className="text-3xl">&times;</span>
           </button>
           <button
-            className="uppercase font-bold text-black mb-4 bg-transparent border-none outline-none cursor-pointer text-base"
+            className="uppercase font-bold text-black mb-4 bg-transparent border-none outline-none cursor-pointer text-base w-full"
             style={{ padding: 0, background: 'none' }}
             onClick={onCtaClick}
             type="button"
           >
             About Us
           </button>
-          <a href="#programs" className="uppercase font-bold text-black mb-4 text-base">Programs</a>
           <button
-            className="bg-[#CA2526] text-white font-bold rounded-full px-6 py-2 uppercase mb-4 text-base"
+            className="uppercase font-bold text-black mb-4 bg-transparent border-none outline-none cursor-pointer text-base w-full"
+            style={{ padding: 0, background: 'none' }}
+            type="button"
+            disabled
+          >
+            Programs
+          </button>
+          <button
+            className="bg-[#CA2526] text-white font-bold rounded-full px-6 py-2 uppercase mb-4 text-base w-full"
             onClick={onCtaClick}
             type="button"
           >
             Enquire Now
           </button>
           <button
-            className="uppercase font-bold text-black mb-4 bg-transparent border-none outline-none cursor-pointer text-base"
+            className="uppercase font-bold text-black mb-4 bg-transparent border-none outline-none cursor-pointer text-base w-full"
             style={{ padding: 0, background: 'none' }}
             onClick={onCtaClick}
             type="button"
           >
             Apply Now
           </button>
-          <a href="/blogs" className="text-black mb-2">Blogs</a>
-          <a href="/contact-us" className="text-black mb-2">Contact Us</a>
-          <a href="https://support.vignanonline.com" target="_blank" rel="noopener noreferrer" className="text-black mb-2">Student Support</a>
-          <a href="https://refer.vignanonline.com/" target="_blank" rel="noopener noreferrer" className="text-black">Refer a Friend</a>
+          <a href="/blogs" className="text-black mb-2 w-full block">Blogs</a>
+          <a href="/contact-us" className="text-black mb-2 w-full block">Contact Us</a>
+          <a href="https://support.vignanonline.com" target="_blank" rel="noopener noreferrer" className="text-black mb-2 w-full block">Student Support</a>
+          <a href="https://refer.vignanonline.com/" target="_blank" rel="noopener noreferrer" className="text-black w-full block">Refer a Friend</a>
         </div>
       )}
     </header>

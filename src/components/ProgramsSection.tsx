@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 const programs = [
   {
@@ -98,6 +98,22 @@ interface ProgramsSectionProps {
 
 const ProgramsSection: React.FC<ProgramsSectionProps> = ({ onCtaClick }) => {
   const [activeTab, setActiveTab] = useState('all');
+  const [openInfo, setOpenInfo] = useState<number | null>(null);
+  const infoRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        openInfo !== null &&
+        infoRefs.current[openInfo] &&
+        !infoRefs.current[openInfo]?.contains(event.target as Node)
+      ) {
+        setOpenInfo(null);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [openInfo]);
 
   const filteredPrograms =
     activeTab === 'all' ? programs : programs.filter((program) => program.category === activeTab);
@@ -141,8 +157,9 @@ const ProgramsSection: React.FC<ProgramsSectionProps> = ({ onCtaClick }) => {
             </button>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8">
-            {filteredPrograms.map((program) => {
+            {filteredPrograms.map((program, idx) => {
               const [main, specialization] = getTitleParts(program.title);
+              const programIdx = programs.findIndex((p) => p.id === program.id);
               return (
                 <div
                   key={program.id}
@@ -168,6 +185,38 @@ const ProgramsSection: React.FC<ProgramsSectionProps> = ({ onCtaClick }) => {
                       <div className="flex items-center gap-2">
                         <img src="/img/duration-icon.webp" alt="" className="w-4 h-4" />
                         <span className="text-gray-700">{program.duration}</span>
+                      </div>
+                      <div className="flex items-center gap-2 mt-1" ref={el => infoRefs.current[programIdx] = el}>
+                        <span className="font-semibold text-gray-800">Course Fee:</span>
+                        <span className="text-[#CA2526] font-bold text-base">
+                          {program.category === 'bachelors' ? 'Rs. 1,08,000' : 'Rs. 90,000'}
+                        </span>
+                        <div className="relative group">
+                          <button
+                            type="button"
+                            className="ml-1 text-xs text-gray-500 bg-gray-200 rounded-full w-5 h-5 flex items-center justify-center focus:outline-none"
+                            tabIndex={0}
+                            aria-label="Info"
+                            onClick={e => {
+                              e.stopPropagation();
+                              setOpenInfo(openInfo === programIdx ? null : programIdx);
+                            }}
+                            onMouseEnter={() => {
+                              if (window.innerWidth >= 768) setOpenInfo(programIdx);
+                            }}
+                            onMouseLeave={() => {
+                              if (window.innerWidth >= 768) setOpenInfo(null);
+                            }}
+                          >
+                            i
+                          </button>
+                          {/* Tooltip */}
+                          <div
+                            className={`absolute left-1/2 -translate-x-1/2 mt-2 w-48 bg-white border border-gray-300 rounded shadow-lg text-xs text-gray-700 px-3 py-2 z-20 transition-opacity duration-200 ${openInfo === programIdx ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+                          >
+                            Excluding Registration and Exam Fee
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <button

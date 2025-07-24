@@ -24,7 +24,7 @@ function App() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setCtaOpen(true);
-    }, 5000); // 20 seconds
+    }, 5000); // 5 seconds
     return () => clearTimeout(timer);
   }, []);
 
