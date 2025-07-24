@@ -157,7 +157,7 @@ const ProgramsSection: React.FC<ProgramsSectionProps> = ({ onCtaClick }) => {
             </button>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8">
-            {filteredPrograms.map((program, idx) => {
+            {filteredPrograms.map((program) => {
               const [main, specialization] = getTitleParts(program.title);
               const programIdx = programs.findIndex((p) => p.id === program.id);
               return (
