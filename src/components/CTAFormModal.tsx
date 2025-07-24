@@ -75,7 +75,7 @@ const CTAFormModal: React.FC = () => {
     <div className="w-full flex flex-col md:flex-row items-center justify-center bg-white rounded-xl shadow-lg p-0 max-w-5xl mx-auto overflow-hidden">
       {/* Left: Background Image only */}
       <div
-        className="flex-1 min-w-[320px] h-[420px] bg-cover rounded-l-xl"
+        className="flex-1 w-full md:min-w-[320px] h-40 md:h-[420px] bg-cover rounded-t-xl md:rounded-l-xl md:rounded-t-none"
         style={{
           backgroundImage: "url('/img/student-hero.jpg')",
           backgroundPosition: '6% center',
@@ -83,12 +83,12 @@ const CTAFormModal: React.FC = () => {
         }}
       ></div>
       {/* Right: Form */}
-      <form className="flex-1 bg-white p-8 flex flex-col gap-4 min-w-[320px]" onSubmit={handleSubmit} autoComplete="off">
+      <form className="flex-1 bg-white p-4 md:p-8 flex flex-col gap-3 md:gap-4 w-full min-w-0" onSubmit={handleSubmit} autoComplete="off">
         <input
           type="text"
           name="name"
           placeholder="Name"
-          className="border border-gray-300 rounded px-4 py-3 w-full text-base"
+          className="border border-gray-300 rounded px-3 md:px-4 py-2 md:py-3 w-full text-sm md:text-base"
           value={form.name}
           onChange={handleChange}
         />
@@ -99,7 +99,7 @@ const CTAFormModal: React.FC = () => {
           type="email"
           name="email"
           placeholder="Email"
-          className="border border-gray-300 rounded px-4 py-3 w-full text-base"
+          className="border border-gray-300 rounded px-3 md:px-4 py-2 md:py-3 w-full text-sm md:text-base"
           value={form.email}
           onChange={handleChange}
         />
@@ -109,7 +109,7 @@ const CTAFormModal: React.FC = () => {
         <div className="flex gap-2">
           <select
             name="countryCode"
-            className="border border-gray-300 rounded px-4 py-3 text-base"
+            className="border border-gray-300 rounded px-3 md:px-4 py-2 md:py-3 text-sm md:text-base"
             value={form.countryCode}
             onChange={handleChange}
             style={{ maxWidth: 90 }}
@@ -121,7 +121,7 @@ const CTAFormModal: React.FC = () => {
             type="text"
             name="mobile"
             placeholder="Enter 10 Digit Mobile Number"
-            className="border border-gray-300 rounded px-4 py-3 w-full text-base"
+            className="border border-gray-300 rounded px-3 md:px-4 py-2 md:py-3 w-full text-sm md:text-base"
             value={form.mobile}
             onChange={handleChange}
             maxLength={10}
@@ -132,7 +132,7 @@ const CTAFormModal: React.FC = () => {
         )}
         <select
           name="program"
-          className="border border-gray-300 rounded px-4 py-3 w-full text-base"
+          className="border border-gray-300 rounded px-3 md:px-4 py-2 md:py-3 w-full text-sm md:text-base"
           value={form.program}
           onChange={handleChange}
         >
@@ -149,7 +149,7 @@ const CTAFormModal: React.FC = () => {
           type="text"
           name="state"
           placeholder="State"
-          className="border border-gray-300 rounded px-4 py-3 w-full text-base"
+          className="border border-gray-300 rounded px-3 md:px-4 py-2 md:py-3 w-full text-sm md:text-base"
           value={form.state}
           onChange={handleChange}
         />
@@ -160,7 +160,7 @@ const CTAFormModal: React.FC = () => {
           type="text"
           name="city"
           placeholder="City"
-          className="border border-gray-300 rounded px-4 py-3 w-full text-base"
+          className="border border-gray-300 rounded px-3 md:px-4 py-2 md:py-3 w-full text-sm md:text-base"
           value={form.city}
           onChange={handleChange}
         />
@@ -182,7 +182,7 @@ const CTAFormModal: React.FC = () => {
         {errors.consent && <span className="text-red-500 text-xs">{errors.consent}</span>}
         <button
           type="submit"
-          className="w-full bg-[#CA2526] text-white font-bold rounded-full py-3 text-lg mt-2 uppercase disabled:opacity-60"
+          className="w-full bg-[#CA2526] text-white font-bold rounded-full py-2 md:py-3 text-base mt-2 uppercase disabled:opacity-60"
           disabled={Object.keys(validate()).length > 0}
         >
           Submit

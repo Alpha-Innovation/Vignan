@@ -54,12 +54,12 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onCtaClick }) => {
                   <div className="w-full">
                     {/* Desktop Image */}
                     <div className="hidden md:block">
-                      <img
-                        src={slide.desktopImage}
-                        width="1920"
-                        height="768"
-                        alt={slide.alt}
-                        title={slide.alt}
+                          <img
+                            src={slide.desktopImage}
+                            width="1920"
+                            height="768"
+                            alt={slide.alt}
+                            title={slide.alt}
                         className="w-full h-auto cursor-pointer"
                         onClick={onCtaClick}
                       />

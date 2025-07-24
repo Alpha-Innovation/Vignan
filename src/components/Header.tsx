@@ -13,27 +13,25 @@ const Header: React.FC<HeaderProps> = ({ onCtaClick }) => {
   return (
     <header className="w-full bg-white shadow relative z-50">
       {/* Precaution Notice with infinite marquee */}
-      <div className="w-full flex justify-end bg-transparent pt-2 pr-8 overflow-hidden">
-        <div className="w-full max-w-[600px]">
-          <div className="whitespace-nowrap animate-marquee-infinite text-[#15396A] font-bold text-xs">
+      <div className="w-full flex justify-end bg-transparent pt-2 pr-2 md:pr-8 overflow-hidden">
+        <div className="w-full max-w-full md:max-w-[600px]">
+          <div className="whitespace-nowrap animate-marquee-infinite text-[#15396A] font-bold text-xs px-2 md:px-0">
             Precautions to be taken by the students before enrolling in programmes offered under Open & Distance Learning (ODL) and/or Online Learning mode - <a href="https://api.vignanonline.com/media/UGC_20240319152222_1.pdf" target="_blank" className="underline text-[#15396A]">Link</a>
           </div>
         </div>
       </div>
       {/* Main Navbar */}
-      <div className="max-w-7xl mx-auto flex items-center justify-between py-1 px-6">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between py-1 px-2 md:px-6">
         {/* Logo Block */}
-        <div className="flex flex-col items-start min-w-[340px]">
+        <div className="flex flex-col items-start w-full md:w-auto mb-2 md:mb-0">
           <div className="flex items-center">
-            <img src="/img/vignan-logo.03d83441.webp" alt="Vignan Logo" className="h-20 w-auto" />
-            
+            <img src="/img/vignan-logo.03d83441.webp" alt="Vignan Logo" className="h-12 md:h-20 w-auto" />
           </div>
-          
         </div>
         {/* Navigation */}
-        <nav className="flex items-center space-x-6 mx-auto">
+        <nav className="flex flex-wrap items-center space-x-2 md:space-x-6 mx-auto w-full md:w-auto justify-center md:justify-end">
           <button
-            className="uppercase font-bold text-black hover:text-[#CA2526] tracking-wide text-sm bg-transparent border-none outline-none cursor-pointer"
+            className="uppercase font-bold text-black hover:text-[#CA2526] tracking-wide text-xs md:text-sm bg-transparent border-none outline-none cursor-pointer"
             style={{ padding: 0, background: 'none' }}
             onClick={onCtaClick}
             type="button"
@@ -41,20 +39,20 @@ const Header: React.FC<HeaderProps> = ({ onCtaClick }) => {
             About Us
           </button>
           <div className="relative group">
-            <button className="uppercase font-bold text-black flex items-center hover:text-[#CA2526] tracking-wide text-sm">
+            <button className="uppercase font-bold text-black flex items-center hover:text-[#CA2526] tracking-wide text-xs md:text-sm">
               Programs
               <FontAwesomeIcon icon={faAngleDown} className="ml-1" />
             </button>
           </div>
           <button
-            className="bg-[#CA2526] text-white font-bold rounded-full px-4 py-1 uppercase hover:bg-[#d02829] transition tracking-wide text-sm"
+            className="bg-[#CA2526] text-white font-bold rounded-full px-3 md:px-4 py-1 uppercase hover:bg-[#d02829] transition tracking-wide text-xs md:text-sm"
             onClick={onCtaClick}
             type="button"
           >
             Enquire Now
           </button>
           <button
-            className="uppercase font-bold text-black hover:text-[#CA2526] tracking-wide text-sm bg-transparent border-none outline-none cursor-pointer"
+            className="uppercase font-bold text-black hover:text-[#CA2526] tracking-wide text-xs md:text-sm bg-transparent border-none outline-none cursor-pointer"
             style={{ padding: 0, background: 'none' }}
             onClick={onCtaClick}
             type="button"
@@ -63,21 +61,21 @@ const Header: React.FC<HeaderProps> = ({ onCtaClick }) => {
           </button>
           {/* Desktop Menu Button */}
           <button
-            className="ml-4 hidden md:block text-xl focus:outline-none"
+            className="ml-2 md:ml-4 hidden md:block text-xl focus:outline-none"
             onClick={() => setIsMenuOpen((prev) => !prev)}
             aria-label="Open menu"
           >
             <FontAwesomeIcon icon={isMenuOpen ? faTimes : faBars} />
           </button>
           {/* Mobile Hamburger Button */}
-          <button className="ml-4 md:hidden block" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} aria-label="Open mobile menu">
+          <button className="ml-2 md:ml-4 md:hidden block" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} aria-label="Open mobile menu">
               <FontAwesomeIcon icon={faBars} className="text-xl" />
             </button>
         </nav>
-                    </div>
+      </div>
       {/* Desktop Dropdown Menu */}
       {isMenuOpen && (
-        <div className="absolute right-8 top-[100%] mt-2 w-72 bg-white border shadow-lg z-50">
+        <div className="absolute right-2 md:right-8 top-[100%] mt-2 w-64 md:w-72 bg-white border shadow-lg z-50">
           <ul className="divide-y divide-gray-200">
             <li>
               <button onClick={onCtaClick} className="block w-full text-left px-6 py-3 hover:bg-gray-100 text-[#15396A] bg-transparent border-none outline-none cursor-pointer">BLOGS</button>
@@ -90,34 +88,34 @@ const Header: React.FC<HeaderProps> = ({ onCtaClick }) => {
             </li>
             <li>
               <button onClick={onCtaClick} className="block w-full text-left px-6 py-3 hover:bg-gray-100 text-[#15396A] bg-transparent border-none outline-none cursor-pointer">REFER A FRIEND</button>
-                              </li>
-                          </ul>
-              </div>
-            )}
+            </li>
+          </ul>
+        </div>
+      )}
       {/* Mobile Menu (unchanged) */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 bg-white z-50 p-6 flex flex-col">
+        <div className="fixed inset-0 bg-white z-50 p-4 flex flex-col">
           <button className="self-end mb-4" onClick={() => setIsMobileMenuOpen(false)} aria-label="Close mobile menu">
             <span className="text-3xl">&times;</span>
           </button>
           <button
-            className="uppercase font-bold text-black mb-4 bg-transparent border-none outline-none cursor-pointer"
+            className="uppercase font-bold text-black mb-4 bg-transparent border-none outline-none cursor-pointer text-base"
             style={{ padding: 0, background: 'none' }}
             onClick={onCtaClick}
             type="button"
           >
             About Us
           </button>
-          <a href="#programs" className="uppercase font-bold text-black mb-4">Programs</a>
+          <a href="#programs" className="uppercase font-bold text-black mb-4 text-base">Programs</a>
           <button
-            className="bg-[#CA2526] text-white font-bold rounded-full px-6 py-2 uppercase mb-4"
+            className="bg-[#CA2526] text-white font-bold rounded-full px-6 py-2 uppercase mb-4 text-base"
             onClick={onCtaClick}
             type="button"
           >
             Enquire Now
           </button>
           <button
-            className="uppercase font-bold text-black mb-4 bg-transparent border-none outline-none cursor-pointer"
+            className="uppercase font-bold text-black mb-4 bg-transparent border-none outline-none cursor-pointer text-base"
             style={{ padding: 0, background: 'none' }}
             onClick={onCtaClick}
             type="button"

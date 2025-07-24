@@ -148,11 +148,11 @@ const ProgramsSection: React.FC<ProgramsSectionProps> = ({ onCtaClick }) => {
                   key={program.id}
                   className="max-w-[370px] mx-auto border border-gray-200 rounded-xl bg-white shadow-none hover:shadow-md transition-all duration-300 p-0"
                 >
-                  <img
-                    src={program.image}
-                    alt={program.title}
+                    <img
+                      src={program.image}
+                      alt={program.title}
                     className="w-full h-[220px] object-cover rounded-t-xl"
-                  />
+                    />
                   <div className="p-6 flex flex-col">
                     <p className="font-bold text-base text-left mb-2">
                       {main}
@@ -178,7 +178,7 @@ const ProgramsSection: React.FC<ProgramsSectionProps> = ({ onCtaClick }) => {
                       Get Started
                     </button>
                   </div>
-                </div>
+              </div>
               );
             })}
           </div>

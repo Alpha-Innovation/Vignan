@@ -71,34 +71,34 @@ const TestimonialsSection: React.FC = () => {
           </h2>
         </div>
         <div className="w-full relative flex justify-center m-auto">
-          <div className="next-testimonials absolute bottom-0 right-32 md:top-[40%] md:-right-10 cursor-pointer z-10 slick-arrow" onClick={nextSlide}>
-            <img src="/img/icon-slider-next.e03370c3.svg" width="40" height="40" alt="slider-next" />
+          <div className="next-testimonials absolute bottom-0 right-4 md:top-[40%] md:-right-10 cursor-pointer z-10 slick-arrow" onClick={nextSlide}>
+            <img src="/img/icon-slider-next.e03370c3.svg" width="32" height="32" alt="slider-next" className="md:w-10 md:h-10 w-8 h-8" />
           </div>
-          <div className="prev-testimonials absolute bottom-0 left-32 md:top-[40%] md:-left-9 cursor-pointer z-10 slick-arrow" onClick={prevSlide}>
-            <img src="/img/icon-slider-prev.f104ac12.svg" width="40" height="40" alt="slider prev" />
+          <div className="prev-testimonials absolute bottom-0 left-4 md:top-[40%] md:-left-9 cursor-pointer z-10 slick-arrow" onClick={prevSlide}>
+            <img src="/img/icon-slider-prev.f104ac12.svg" width="32" height="32" alt="slider prev" className="md:w-10 md:h-10 w-8 h-8" />
           </div>
           <div className="slick-testimonials flex lg:gap-10 gap-1">
             <div className="relative overflow-hidden">
               <div
                 className="flex transition-transform duration-500 ease-in-out"
-                style={{ transform: `translateX(-${currentSlide * 480}px)` }}
+                style={{ transform: `translateX(-${currentSlide * (window.innerWidth < 640 ? 320 : 480)}px)` }}
               >
                 {testimonials.map((testimonial) => (
-                  <div key={testimonial.id} className="w-full max-w-[480px] flex-shrink-0 mx-auto">
-                    <div className="hover:bg-[#d02829] rounded-lg p-2 w-[70%] mx-auto text-black hover:text-white cursor-pointer" style={{ width: '100%', display: 'inline-block' }}>
+                  <div key={testimonial.id} className="w-full max-w-[320px] sm:max-w-[480px] flex-shrink-0 mx-auto">
+                    <div className="hover:bg-[#d02829] rounded-lg p-2 w-full mx-auto text-black hover:text-white cursor-pointer">
                       <div className="flex justify-center">
-                        <div className="h-[325px]">
+                        <div className="h-[220px] sm:h-[325px]">
                           <div className="py-2 px-2 text-left">
-                            <p className="font-semibold text-[16px]">{testimonial.name}</p>
+                            <p className="font-semibold text-[15px] sm:text-[16px]">{testimonial.name}</p>
                             <p className="font-[400]">{testimonial.degree}</p>
                           </div>
                           <div>
                             <img
                               alt={testimonial.name}
                               src={testimonial.image}
-                              width="327"
-                              height="184"
-                              className="rounded-lg object-cover"
+                              width="220"
+                              height="124"
+                              className="rounded-lg object-cover w-full h-[124px] sm:w-[327px] sm:h-[184px]"
                             />
                           </div>
                         </div>

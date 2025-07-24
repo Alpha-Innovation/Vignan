@@ -56,29 +56,29 @@ const FacultySection: React.FC = () => {
           <h2 className="uppercase text-lg md:text-2xl font-bold pt-8">Meet our<span className="text-primary"> Faculty - CDOE</span></h2>
         </div>
         <div className="w-full relative flex justify-center m-auto">
-          <div className="next-faculty absolute bottom-0 right-32 md:top-[40%] md:-right-10 cursor-pointer z-10 slick-arrow" onClick={nextSlide}>
-            <img src="/img/icon-slider-next.e03370c3.svg" width="40" height="40" alt="slider-next" />
+          <div className="next-faculty absolute bottom-0 right-4 md:top-[40%] md:-right-10 cursor-pointer z-10 slick-arrow" onClick={nextSlide}>
+            <img src="/img/icon-slider-next.e03370c3.svg" width="32" height="32" alt="slider-next" className="md:w-10 md:h-10 w-8 h-8" />
           </div>
-          <div className="prev-faculty absolute bottom-0 left-32 md:top-[40%] md:-left-9 cursor-pointer z-10 slick-arrow" onClick={prevSlide}>
-            <img src="/img/icon-slider-prev.f104ac12.svg" width="40" height="40" alt="slider prev" />
+          <div className="prev-faculty absolute bottom-0 left-4 md:top-[40%] md:-left-9 cursor-pointer z-10 slick-arrow" onClick={prevSlide}>
+            <img src="/img/icon-slider-prev.f104ac12.svg" width="32" height="32" alt="slider prev" className="md:w-10 md:h-10 w-8 h-8" />
           </div>
           <div className="slick-faculty flex justify-center m-auto items-center lg:gap-5">
             <div className="relative overflow-hidden">
               <div
                 className="flex transition-transform duration-500 ease-in-out"
-                style={{ transform: `translateX(-${currentSlide * 480}px)` }}
+                style={{ transform: `translateX(-${currentSlide * (window.innerWidth < 640 ? 320 : 480)}px)` }}
               >
                 {faculty.map((member) => (
-                  <div key={member.id} className="w-full max-w-[480px] flex-shrink-0 mx-auto">
-                    <div className="relative h-[320px] w-full" style={{ display: 'inline-block' }}>
+                  <div key={member.id} className="w-full max-w-[320px] sm:max-w-[480px] flex-shrink-0 mx-auto">
+                    <div className="relative h-[180px] sm:h-[320px] w-full" style={{ display: 'inline-block' }}>
                       <div className="flex h-full items-center justify-center m-auto">
-                        <div className="border border-slate-200 rounded-lg w-[335px] md:w-[350px] h-[180px] flex flex-col justify-end py-6 bg-white">
-                          <p className="font-semibold">{member.name}</p>
-                          <p>{member.degree}</p>
-                          <p>{member.position}</p>
-                          <div className="rounded-full p-2 bg-white absolute top-4 left-[37%] shadow-lg">
+                        <div className="border border-slate-200 rounded-lg w-[220px] sm:w-[335px] md:w-[350px] h-[120px] sm:h-[180px] flex flex-col justify-end py-3 sm:py-6 bg-white">
+                          <p className="font-semibold text-sm sm:text-base">{member.name}</p>
+                          <p className="text-xs sm:text-sm">{member.degree}</p>
+                          <p className="text-xs sm:text-sm">{member.position}</p>
+                          <div className="rounded-full p-2 bg-white absolute top-2 sm:top-4 left-[30%] sm:left-[37%] shadow-lg">
                             <img
-                              className="h-[90px] w-[90px] rounded-full object-cover"
+                              className="h-[50px] w-[50px] sm:h-[90px] sm:w-[90px] rounded-full object-cover"
                               src={member.image}
                               alt={member.name}
                               width="90"
