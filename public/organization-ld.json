@@ -1,0 +1,7 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Vignan Online",
+  "url": "https://vignanonline.com/",
+  "logo": "https://vignanonline.com/img/favicon.png"
+}
