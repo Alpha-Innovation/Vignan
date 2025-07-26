@@ -5,10 +5,8 @@ import { faWhatsapp, faFacebook, faTwitter, faInstagram, faYoutube, faLinkedin }
 
 interface FooterProps {
   onCtaClick?: () => void;
-  onPrivacyClick?: () => void;
-  onTermsClick?: () => void;
 }
-const Footer: React.FC<FooterProps> = ({ onCtaClick, onPrivacyClick, onTermsClick }) => {
+const Footer: React.FC<FooterProps> = ({ onCtaClick }) => {
   return (
     <footer className="w-full bg-[#0A4377] text-white pt-0 pb-6 px-0 footer-montserrat">
       {/* Top Red Contact Bar - Centered and Rounded */}
