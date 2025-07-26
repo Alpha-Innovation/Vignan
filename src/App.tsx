@@ -11,15 +11,25 @@ import FacultySection from './components/FacultySection';
 import TestimonialsSection from './components/TestimonialsSection';
 import NewsSection from './components/NewsSection';
 import Footer from './components/Footer';
+import PrivacyPolicyModal from './components/PrivacyPolicyModal';
+import TermsAndConditionsModal from './components/TermsAndConditionsModal';
 import FloatingSocial from './components/FloatingSocial';
 import CTAFormModal from './components/CTAFormModal';
 
 function App() {
+  const [termsOpen, setTermsOpen] = useState(false);
   const [ctaOpen, setCtaOpen] = useState(false);
+  const [privacyOpen, setPrivacyOpen] = useState(false);
 
   // Handler to pass to CTA buttons
   const openCta = () => setCtaOpen(true);
   const closeCta = () => setCtaOpen(false);
+
+  const openPrivacy = () => setPrivacyOpen(true);
+  const closePrivacy = () => setPrivacyOpen(false);
+
+  const openTerms = () => setTermsOpen(true);
+  const closeTerms = () => setTermsOpen(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -39,7 +49,7 @@ function App() {
       <FacultySection />
       <TestimonialsSection />
       <NewsSection />
-      <Footer onCtaClick={openCta} />
+      <Footer onCtaClick={openCta} onPrivacyClick={openPrivacy} onTermsClick={openTerms} />
       <FloatingSocial onCtaClick={openCta} />
       {ctaOpen && (
         <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black bg-opacity-50" onClick={closeCta}>
@@ -50,6 +60,8 @@ function App() {
         </div>
       )}
       <Analytics />
+      <PrivacyPolicyModal isOpen={privacyOpen} onClose={closePrivacy} />
+      <TermsAndConditionsModal isOpen={termsOpen} onClose={closeTerms} />
     </div>
   );
 }

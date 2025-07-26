@@ -5,8 +5,10 @@ import { faWhatsapp, faFacebook, faTwitter, faInstagram, faYoutube, faLinkedin }
 
 interface FooterProps {
   onCtaClick?: () => void;
+  onPrivacyClick?: () => void;
+  onTermsClick?: () => void;
 }
-const Footer: React.FC<FooterProps> = ({ onCtaClick }) => {
+const Footer: React.FC<FooterProps> = ({ onCtaClick, onPrivacyClick, onTermsClick }) => {
   return (
     <footer className="w-full bg-[#0A4377] text-white pt-0 pb-6 px-0 footer-montserrat">
       {/* Top Red Contact Bar - Centered and Rounded */}
@@ -22,7 +24,7 @@ const Footer: React.FC<FooterProps> = ({ onCtaClick }) => {
           </div>
           <div className="flex flex-col items-center text-center flex-1 min-w-[140px]">
             <FontAwesomeIcon icon={faEnvelope} className="mb-1 text-xl" />
-            <span className="text-sm font-medium">info@vignanonline.com</span>
+            <span className="text-sm font-medium">info@onlinevignan.in</span>
           </div>
           <div className="flex flex-col items-center text-center flex-1 min-w-[140px]">
             <FontAwesomeIcon icon={faMapMarkerAlt} className="mb-1 text-xl" />
@@ -37,7 +39,7 @@ const Footer: React.FC<FooterProps> = ({ onCtaClick }) => {
           <img src="/img/logo-white.904fece1.webp" alt="Vignan Logo" className="h-10 w-auto mb-1" />
           <div className="text-[9px] text-white mb-2 text-center md:text-left">(Deemed to be University) - Estd. u/s 3 of UGC Act 1956</div>
           <div className="flex space-x-2 mb-1">
-            <a href="https://www.instagram.com/vignanonline/" target="_blank" rel="noopener noreferrer" className="text-base"><FontAwesomeIcon icon={faInstagram} /></a>
+            <a href="https://www.instagram.com/vignan_online/" target="_blank" rel="noopener noreferrer" className="text-base"><FontAwesomeIcon icon={faInstagram} /></a>
             <a href="https://www.youtube.com/channel/UC9xOL6RM5DShuroZMecmEvg" target="_blank" rel="noopener noreferrer" className="text-base"><FontAwesomeIcon icon={faYoutube} /></a>
             <a href="https://www.facebook.com/vignanonline/" target="_blank" rel="noopener noreferrer" className="text-base"><FontAwesomeIcon icon={faFacebook} /></a>
             <a href="https://www.linkedin.com/company/vignan-online" target="_blank" rel="noopener noreferrer" className="text-base"><FontAwesomeIcon icon={faLinkedin} /></a>
@@ -75,7 +77,7 @@ const Footer: React.FC<FooterProps> = ({ onCtaClick }) => {
               <li><a href="/apna-advantage" className="hover:underline text-xs font-normal">Apna Advantage</a></li>
               <li><a href="/download-brochure" className="hover:underline text-xs font-normal">Download brochure</a></li>
               <li><a href="/student-support" className="hover:underline text-xs font-normal">Student Support</a></li>
-              <li><a href="/privacy-policy" className="hover:underline text-xs font-normal">Privacy policy</a></li>
+              <li><button type="button" onClick={onPrivacyClick} className="hover:underline text-xs font-normal bg-transparent border-none outline-none cursor-pointer p-0">Privacy policy</button></li>
               <li><a href="/refund-policy" className="hover:underline text-xs font-normal">Refund policy</a></li>
             </ul>
           </div>
@@ -88,7 +90,7 @@ const Footer: React.FC<FooterProps> = ({ onCtaClick }) => {
               <li><a href="/feedback-grievance" className="hover:underline text-xs font-normal">Feedback and Grievance Management</a></li>
               <li><a href="/quality-assurance" className="hover:underline text-xs font-normal">Quality and Assurance</a></li>
               <li><a href="/past-enrolments" className="hover:underline text-xs font-normal">Past Enrolments</a></li>
-              <li><a href="/terms-conditions" className="hover:underline text-xs font-normal">Terms & Conditions</a></li>
+              <li><button type="button" onClick={onTermsClick} className="hover:underline text-xs font-normal bg-transparent border-none outline-none cursor-pointer p-0">Terms & Conditions</button></li>
             </ul>
           </div>
         </div>
